@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Grand Khazi of Ullal Dargah - Spiritual Leadership">
+
+    <title>Ullal Dargah - Grand Khazi</title>
+
+    <!-- Anti Flash Theme -->
+    <script>
+        (function () {
+            var savedTheme = localStorage.getItem('theme');
+            var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+</head>
+
+<body>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="main-header">
+
+        <div class="top-bar">
+
+            <div class="top-left">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="current-date"></span>
+            </div>
+
+            <div class="top-right">
+
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="https://youtube.com/ULLALDARGAOFFICIAL">
+                    <i class="fab fa-youtube"></i>
+                </a>
+
+                <a href="https://instagram.com/sayyidmadanidargaullal">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://wa.me/+919113004135">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        <nav class="navbar">
+
+            <a href="index.html" class="logo">
+
+                <img src="images/ullal_darga_logo.png"
+                    alt="Ullal Dargah Logo">
+
+                <div class="logo-text">
+                    <h2>Ullal Dargah</h2>
+                </div>
+
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+
+                <div class="mobile-nav-header">
+
+                    <span class="mobile-nav-title">
+
+                        <img src="images/ullal_darga_logo.png"
+                            style="height:32px;width:auto;margin-right:8px;">
+
+                        Ullal Dargah
+
+                    </span>
+
+                    <button class="nav-close-btn" id="navCloseBtn">
+
+                        <i class="fas fa-times"></i>
+
+                    </button>
+
+                </div>
+
+                <li>
+                    <a href="index.html" class="nav-link">
+                        Home
+                    </a>
+                </li>
+
+                <li class="dropdown">
+
+                    <a href="#" class="nav-link active">
+                        About
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="history.html">
+                                History
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="president.html">
+                                President
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="khazi.html" class="active">
+                                Grand Khazi
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li>
+                    <a href="events.html" class="nav-link">
+                        Events
+                    </a>
+                </li>
+
+                <li>
+                    <a href="gallery.html" class="nav-link">
+                        Gallery
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html" class="nav-link">
+                        Contact
+                    </a>
+                </li>
+
+                <li class="mobile-donate-li">
+
+                    <a href="contact.html#donation"
+                        class="donate-btn mobile-donate-btn">
+
+                        Donate Now
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+            <div class="nav-actions">
+
+                <button id="themeToggle">
+
+                    <i class="fas fa-moon"></i>
+
+                </button>
+
+                <a href="contact.html#donation"
+                    class="donate-btn">
+
+                    Donate
+
+                </a>
+
+                <div class="menu-btn"
+                    id="menuBtn">
+
+                    <i class="fas fa-bars"></i>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+    <main class="page-main">
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <section class="page-header" id="particles-js">
+
+        <div class="hero-overlay"></div>
+
+        <h1>Grand Khazi</h1>
+
+        <p>
+            Meet the Grand Khazi of Ullal Dargah and learn about his
+            spiritual leadership, scholarship and lifelong service to Islam.
+        </p>
+
+    </section>
+
+    <!-- ================= INFO SECTION ================= -->
+
+    <section class="info-section reveal">
+
+        <div class="info-card">
+            <div class="icon">🕌</div>
+            <h3>Spiritual Leader</h3>
+            <p>Providing religious guidance to the Muslim community.</p>
+        </div>
+
+        <div class="info-card">
+            <div class="icon">📖</div>
+            <h3>Islamic Scholar</h3>
+            <p>Dedicated to preserving Islamic teachings and traditions.</p>
+        </div>
+
+        <div class="info-card">
+            <div class="icon">🤝</div>
+            <h3>Community Service</h3>
+            <p>Promoting harmony, unity and social welfare.</p>
+        </div>
+
+        <div class="info-card">
+            <div class="icon">🌍</div>
+            <h3>Inspiration</h3>
+            <p>Guiding thousands of devotees through faith and knowledge.</p>
+        </div>
+
+    </section>
+
+    <!-- ================= ABOUT GRAND KHAZI ================= -->
+
+    <section class="about reveal">
+
+        <div class="about-image">
+
+            <img src="images/apusthad.png"
+                 alt="A. P. Aboobacker Musliyar Kanthapuram"
+                 loading="lazy">
+
+        </div>
+
+        <div class="about-content">
+
+            <h2>A. P. Aboobacker Musliyar Kanthapuram</h2>
+
+            <div class="line"></div>
+
+            <p>
+                A. P. Aboobacker Musliyar Kanthapuram is one of the most
+                respected Islamic scholars in India and serves as the
+                Grand Khazi, providing spiritual guidance and leadership
+                to thousands of followers.
+            </p>
+
+            <p>
+                His teachings emphasize peace, compassion, education,
+                unity and the preservation of Islamic values while
+                encouraging harmony among people of all communities.
+            </p>
+
+            <p>
+                Through decades of dedicated service, he has inspired
+                numerous educational, charitable and religious initiatives,
+                strengthening the spiritual legacy of Ullal Dargah.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= GRAND KHAZI PROFILE ================= -->
+
+    <section class="leaders-section reveal">
+
+        <div class="section-heading">
+
+            <h2>Grand Khazi</h2>
+
+            <p>
+                Spiritual Leader of Ullal Dargah
+            </p>
+
+        </div>
+
+        <div class="leaders-grid">
+
+            <div class="leader-card">
+
+                <img src="images/apusthad.png"
+                     alt="Grand Khazi">
+
+                <div class="leader-info">
+
+                    <h3>
+                        A. P. Aboobacker Musliyar Kanthapuram
+                    </h3>
+
+                    <span>
+                        Grand Khazi
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- About -->
+        <div class="footer-col footer-about">
+
+            <img src="images/ullal_darga_logo.png"
+                alt="Ullal Dargah Logo"
+                class="footer-logo">
+
+            <p>
+                A sacred place of faith, spirituality, peace and blessings
+                for devotees from around the world.
+            </p>
+
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+
+            <h3>Quick Links</h3>
+
+            <ul>
+
+                <li><a href="index.html">Home</a></li>
+
+<li class="dropdown">
+    <a href="#" class="nav-link">
+        About <i class="fas fa-chevron-down"></i>
+    </a>
+
+    <ul class="dropdown-menu">
+        <li><a href="history.html">History</a></li>
+        <li><a href="president.html">President</a></li>
+        <li><a href="khazi.html">Khazi</a></li>
+    </ul>
+</li>    
+                <li><a href="president.html">President</a></li>
+
+                <li><a href="khazi.html">Grand Khazi</a></li>
+
+                <li><a href="events.html">Events</a></li>
+
+                <li><a href="gallery.html">Gallery</a></li>
+
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+
+            <h3>Contact Info</h3>
+
+            <p>📍 Ullal Darga Road, Mangalore, Karnataka 575020</p>
+
+            <p>📞 +91 9113004135</p>
+
+            <p>✉ info@ullaldargah.com</p>
+
+        </div>
+
+        <!-- Social -->
+        <div class="footer-col">
+
+            <h3>Follow Us</h3>
+
+            <div class="social-icons">
+
+                <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://instagram.com/sayyidmadanidargaullal">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://youtube.com/ULLALDARGAOFFICIAL">
+                    <i class="fab fa-youtube"></i>
+                </a>
+
+                <a href="https://wa.me/+919113004135">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>© 2026 Ullal Dargah. All Rights Reserved.</p>
+
+    </div>
+
+</footer>
+
+<!-- Back To Top -->
+
+<button id="topBtn" aria-label="Back to top">
+    ↑
+</button>
+
+<!-- WhatsApp -->
+
+<a href="https://wa.me/+919113004135"
+   class="whatsapp"
+   target="_blank"
+   aria-label="Contact on WhatsApp">
+
+    <i class="fab fa-whatsapp"></i>
+
+</a>
+
+<!-- Scripts -->
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

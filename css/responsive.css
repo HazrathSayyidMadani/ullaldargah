@@ -1,0 +1,1345 @@
+/* ===========================================================
+   PART 1 - GLOBAL + HEADER + NAVBAR + HERO
+   Mobile First Responsive CSS
+=========================================================== */
+
+/* ===========================
+   GLOBAL
+=========================== */
+
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    -webkit-text-size-adjust:100%;
+}
+
+body{
+    margin:0;
+    width:100%;
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.main-header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
+    transition:.35s;
+}
+
+.top-bar{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 5%;
+    flex-wrap:wrap;
+}
+
+.top-left,
+.top-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar{
+
+width:100%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:14px 5%;
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+min-width:0;
+
+}
+
+.logo img{
+
+width:58px;
+
+height:58px;
+
+object-fit:contain;
+
+flex-shrink:0;
+
+}
+
+.logo-text{
+
+display:flex;
+
+align-items:center;
+
+}
+
+.logo-text h2{
+
+margin:0;
+
+font-size:24px;
+
+white-space:nowrap;
+
+}
+
+.nav-links{
+
+display:flex;
+
+align-items:center;
+
+gap:28px;
+
+list-style:none;
+
+margin:0;
+
+padding:0;
+
+}
+
+.nav-links li{
+
+position:relative;
+
+}
+
+.nav-links a{
+
+display:block;
+
+padding:10px 0;
+
+font-size:16px;
+
+}
+
+.nav-actions{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.menu-btn{
+
+display:none;
+
+cursor:pointer;
+
+font-size:24px;
+
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+
+position:relative;
+
+width:100%;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background-position:center;
+
+background-repeat:no-repeat;
+
+background-size:cover;
+
+overflow:hidden;
+
+padding-top:120px;
+
+}
+
+.hero-content{
+
+width:100%;
+
+max-width:900px;
+
+padding:30px;
+
+text-align:center;
+
+z-index:2;
+
+}
+
+.hero-content h1{
+
+font-size:58px;
+
+line-height:1.2;
+
+margin-bottom:20px;
+
+}
+
+.hero-content p{
+
+font-size:20px;
+
+line-height:1.8;
+
+margin-bottom:35px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media(max-width:991px){
+
+.navbar{
+
+padding:14px 25px;
+
+}
+
+.logo img{
+
+width:50px;
+
+height:50px;
+
+}
+
+.logo-text h2{
+
+font-size:20px;
+
+}
+
+.nav-links{
+
+gap:18px;
+
+}
+
+.hero{
+
+padding-top:100px;
+
+}
+
+.hero-content{
+
+max-width:700px;
+
+}
+
+.hero-content h1{
+
+font-size:42px;
+
+}
+
+.hero-content p{
+
+font-size:18px;
+
+}
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.top-bar{
+
+display:none;
+
+}
+
+.main-header{
+
+width:100%;
+
+}
+
+.navbar{
+
+padding:12px 18px;
+
+height:72px;
+
+}
+
+.logo{
+
+flex:1;
+
+overflow:hidden;
+
+}
+
+.logo img{
+
+width:42px;
+
+height:42px;
+
+}
+
+.logo-text h2{
+
+font-size:18px;
+
+white-space:nowrap;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
+}
+
+.nav-actions{
+
+gap:8px;
+
+}
+
+.nav-actions .donate-btn{
+
+display:none;
+
+}
+
+#themeToggle{
+
+display:none;
+
+}
+
+.menu-btn{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+width:40px;
+
+height:40px;
+
+font-size:22px;
+
+}
+
+.nav-links{
+
+position:fixed;
+
+top:0;
+
+right:-100%;
+
+width:290px;
+
+max-width:85%;
+
+height:100vh;
+
+background:var(--bg-surface);
+
+display:flex;
+
+flex-direction:column;
+
+align-items:flex-start;
+
+padding:90px 20px 30px;
+
+gap:8px;
+
+transition:.35s;
+
+overflow-y:auto;
+
+z-index:99999;
+
+}
+
+.nav-links.open{
+
+right:0;
+
+}
+
+.nav-links li{
+
+width:100%;
+
+}
+
+.nav-links a{
+
+width:100%;
+
+padding:14px 16px;
+
+border-radius:8px;
+
+}
+
+.mobile-nav-header{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+width:100%;
+
+margin-bottom:15px;
+
+padding-bottom:15px;
+
+}
+
+.hero{
+
+min-height:100svh;
+
+padding:90px 20px 50px;
+
+background-position:center center;
+
+background-size:cover;
+
+}
+
+.hero-content{
+
+padding:10px;
+
+}
+
+.hero-content h1{
+
+font-size:34px;
+
+line-height:1.3;
+
+margin-bottom:15px;
+
+}
+
+.hero-content p{
+
+font-size:16px;
+
+line-height:1.7;
+
+margin-bottom:25px;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+gap:15px;
+
+width:100%;
+
+}
+
+.primary-btn,
+.secondary-btn{
+
+width:100%;
+
+max-width:320px;
+
+margin:auto;
+
+}
+
+}
+
+/* ===========================
+   SMALL MOBILE
+=========================== */
+
+@media(max-width:480px){
+
+.navbar{
+
+padding:10px 15px;
+
+}
+
+.logo img{
+
+width:38px;
+
+height:38px;
+
+}
+
+.logo-text h2{
+
+font-size:16px;
+
+}
+
+.hero{
+
+padding:80px 16px 40px;
+
+}
+
+.hero-content h1{
+
+font-size:28px;
+
+}
+
+.hero-content p{
+
+font-size:15px;
+
+}
+
+.hero-buttons{
+
+gap:12px;
+
+}
+
+}
+
+/* ===========================
+   EXTRA SMALL
+=========================== */
+
+@media(max-width:360px){
+
+.logo-text h2{
+
+font-size:15px;
+
+}
+
+.logo img{
+
+width:35px;
+
+height:35px;
+
+}
+
+.hero-content h1{
+
+font-size:24px;
+
+}
+
+.hero-content p{
+
+font-size:14px;
+
+}
+
+.nav-links{
+
+width:260px;
+
+}
+
+}
+/* ==========================================================
+   PART 2 - TABLET RESPONSIVE (1024px and below)
+========================================================== */
+
+@media (max-width:1024px){
+
+/* ================= NAVBAR ================= */
+
+.top-bar{
+    padding:8px 20px;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    text-align:center;
+}
+
+.navbar{
+    height:70px;
+    padding:0 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+}
+
+.logo-text h2{
+    font-size:1.25rem;
+}
+
+/* ================= MENU BUTTON ================= */
+
+.menu-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:45px;
+    height:45px;
+    font-size:24px;
+    color:#fff;
+    cursor:pointer;
+    z-index:2500;
+}
+
+/* ================= MOBILE DRAWER ================= */
+
+.nav-links{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:300px;
+    max-width:85%;
+    height:100vh;
+    background:#fff;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:25px;
+    overflow-y:auto;
+    transition:.4s;
+    z-index:2200;
+    box-shadow:-10px 0 35px rgba(0,0,0,.18);
+}
+
+.nav-links.open{
+    right:0;
+}
+
+.nav-links li{
+    width:100%;
+    list-style:none;
+}
+
+.nav-links li a{
+    display:block;
+    width:100%;
+    padding:14px 15px;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.nav-links li a:hover{
+    background:#f3f4f6;
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown-menu{
+    position:static;
+    width:100%;
+    display:none;
+    background:#f9f9f9;
+    box-shadow:none;
+    margin-top:6px;
+    border-radius:8px;
+}
+
+.dropdown.active .dropdown-menu{
+    display:block;
+}
+
+.dropdown-menu li a{
+    padding:12px 18px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    width:100%;
+    min-height:70vh;
+    background-position:center center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:80px 25px;
+}
+
+.hero-content{
+    width:100%;
+    max-width:700px;
+    text-align:center;
+    padding:35px;
+}
+
+.hero-content h1{
+    font-size:2.5rem;
+    line-height:1.3;
+}
+
+.hero-content p{
+    font-size:16px;
+}
+
+.hero-buttons{
+    justify-content:center;
+}
+
+/* ================= LEADERS ================= */
+
+.leaders-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+/* ================= NEWS ================= */
+
+.news-slider{
+    padding-bottom:50px;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+/* ================= CONTACT ================= */
+
+.contact-container{
+    grid-template-columns:1fr;
+    gap:35px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer-container{
+    grid-template-columns:repeat(2,1fr);
+    gap:35px;
+}
+
+/* ================= ADMIN ================= */
+
+.dashboard-container{
+    grid-template-columns:1fr;
+}
+
+.admin-sidebar{
+    display:flex;
+    overflow:auto;
+}
+
+.stats-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+/* ==========================================================
+   PART 3 - MOBILE RESPONSIVE (767px and below)
+========================================================== */
+
+@media (max-width:767px){
+
+/* ================= HEADER ================= */
+
+.main-header{
+    width:100%;
+}
+
+.top-bar{
+    display:none;
+}
+
+.navbar{
+    height:65px;
+    padding:0 15px;
+}
+
+.logo img{
+    width:42px;
+    height:42px;
+}
+
+.logo-text h2{
+    font-size:18px;
+}
+
+/* ================= MOBILE MENU ================= */
+
+.nav-links{
+    width:270px;
+    padding:20px;
+}
+
+.mobile-nav-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    margin-bottom:20px;
+    padding-bottom:15px;
+    border-bottom:1px solid #ddd;
+}
+
+.mobile-nav-title{
+    display:flex;
+    align-items:center;
+    font-weight:600;
+    font-size:18px;
+}
+
+.mobile-nav-title img{
+    width:34px;
+    margin-right:10px;
+}
+
+.nav-close-btn{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:none;
+    cursor:pointer;
+    background:#f3f4f6;
+}
+
+.nav-links li{
+    width:100%;
+}
+
+.nav-links li a{
+    padding:15px;
+    font-size:16px;
+}
+
+.mobile-donate-btn{
+    margin-top:20px;
+    width:100%;
+    text-align:center;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:60vh;
+    padding:70px 15px;
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    width:100%;
+    padding:25px 20px;
+}
+
+.hero-content h1{
+    font-size:32px;
+    line-height:1.3;
+}
+
+.hero-content p{
+    font-size:15px;
+    line-height:1.7;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.primary-btn,
+.secondary-btn{
+    width:100%;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    padding:60px 18px;
+}
+
+.section-heading h2{
+    font-size:30px;
+}
+
+.section-heading p{
+    font-size:15px;
+}
+
+/* ================= PRAYER ================= */
+
+.home-prayer-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.home-prayer-item{
+    padding:18px 10px;
+}
+
+.home-prayer-item strong{
+    font-size:20px;
+}
+
+/* ================= LEADERS ================= */
+
+.leaders-grid{
+    grid-template-columns:1fr;
+}
+
+.leader-card img{
+    height:320px;
+}
+
+/* ================= NEWS ================= */
+
+.news-slider .swiper-button-next,
+.news-slider .swiper-button-prev{
+    display:none;
+}
+
+.news-slider{
+    padding-bottom:45px;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.stat-box{
+    padding:20px;
+}
+
+.stat-box h2{
+    font-size:30px;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery-grid{
+    grid-template-columns:1fr;
+}
+
+.gallery-img{
+    height:240px;
+}
+
+/* ================= VIDEO ================= */
+
+.video-grid{
+    grid-template-columns:1fr;
+}
+
+/* ================= DONATION ================= */
+
+.donation-grid{
+    grid-template-columns:1fr;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-container{
+    grid-template-columns:1fr;
+}
+
+.contact-form{
+    padding:20px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    padding:50px 20px 20px;
+}
+
+.footer-container{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.footer-logo{
+    margin:auto;
+}
+
+.social-icons{
+    justify-content:center;
+}
+
+/* ================= FLOAT BUTTONS ================= */
+
+#topBtn,
+.whatsapp{
+    width:48px;
+    height:48px;
+    font-size:20px;
+}
+
+/* ================= TABLE ================= */
+
+.table-container{
+    overflow:auto;
+}
+
+.admin-table{
+    min-width:650px;
+}
+
+}
+/* ==========================================================
+   PART 4 - SMALL MOBILE (480px and below)
+========================================================== */
+
+@media (max-width:480px){
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    height:60px;
+    padding:0 12px;
+}
+
+.logo{
+    gap:8px;
+}
+
+.logo img{
+    width:36px;
+    height:36px;
+}
+
+.logo-text h2{
+    font-size:16px;
+    white-space:nowrap;
+}
+
+.menu-btn{
+    width:40px;
+    height:40px;
+    font-size:20px;
+}
+
+.nav-links{
+    width:260px;
+    padding:18px;
+}
+
+.mobile-nav-title{
+    font-size:16px;
+}
+
+.mobile-nav-title img{
+    width:28px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:55vh;
+    padding:50px 15px;
+    background-size:cover;
+    background-position:center center;
+}
+
+.hero-content{
+    padding:20px 15px;
+}
+
+.hero-content h1{
+    font-size:26px;
+    line-height:1.4;
+}
+
+.hero-content p{
+    font-size:14px;
+}
+
+.badge{
+    font-size:12px;
+    padding:6px 12px;
+}
+
+.primary-btn,
+.secondary-btn{
+    width:100%;
+    padding:13px;
+    font-size:15px;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    padding:45px 15px;
+}
+
+.section-heading h2{
+    font-size:26px;
+}
+
+.section-heading p{
+    font-size:14px;
+}
+
+/* ================= PRAYER ================= */
+
+.home-prayer-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+}
+
+.home-prayer-item{
+    padding:15px;
+}
+
+.home-prayer-item strong{
+    font-size:22px;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    grid-template-columns:1fr;
+}
+
+.stat-box{
+    padding:20px;
+}
+
+.stat-box h2{
+    font-size:28px;
+}
+
+/* ================= LEADERS ================= */
+
+.leader-card img{
+    height:280px;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery-grid{
+    grid-template-columns:1fr;
+}
+
+.gallery-img{
+    height:220px;
+}
+
+/* ================= VIDEO ================= */
+
+.video-card iframe{
+    width:100%;
+    aspect-ratio:16/9;
+}
+
+/* ================= FORMS ================= */
+
+.contact-form,
+.dua-form-card,
+.login-card{
+    padding:18px;
+}
+
+input,
+textarea,
+select,
+button{
+    width:100%;
+    font-size:16px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    padding:40px 15px 20px;
+}
+
+.footer-logo{
+    width:70px;
+}
+
+.footer h3{
+    font-size:18px;
+}
+
+.footer p,
+.footer li,
+.footer a{
+    font-size:14px;
+}
+
+/* ================= FLOATING BUTTONS ================= */
+
+.whatsapp,
+#topBtn{
+    width:45px;
+    height:45px;
+    font-size:18px;
+}
+
+.whatsapp{
+    left:12px;
+    bottom:15px;
+}
+
+#topBtn{
+    right:12px;
+    bottom:15px;
+}
+
+/* ================= TABLE ================= */
+
+.table-container{
+    overflow-x:auto;
+}
+
+.admin-table{
+    min-width:650px;
+}
+
+/* ================= IMAGES ================= */
+
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+
+iframe{
+    width:100%;
+}
+
+}
+
+/* ==========================================================
+   EXTRA FIXES FOR ALL DEVICES
+========================================================== */
+
+html{
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+.hero,
+.hero img{
+    width:100%;
+}
+
+section{
+    width:100%;
+}
+
+.container,
+.wrapper{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+    padding-left:20px;
+    padding-right:20px;
+}

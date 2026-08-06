@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visual Journey, Photo Gallery & Video Archive of Ullal Dargah.">
+    <title>Ullal Dargah - Gallery</title>
+
+    <!-- Anti-Flash Theme Script -->
+    <script>
+        (function() {
+            var savedTheme = localStorage.getItem('theme');
+            var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- <div id="preloader" aria-hidden="true">
+        <div class="loader-content">
+            <i class="fas fa-moon"></i>
+            <h2>Ullal Dargah</h2>
+            <div class="spinner"></div>
+        </div>
+    </div> -->
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="top-left">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="current-date"></span>
+            </div>
+            <div class="top-right">
+                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://youtube.com/ULLALDARGAOFFICIAL" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://instagram.com/sayyidmadanidargaullal" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/+919113004135" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <nav class="navbar" role="navigation" aria-label="Main Navigation">
+            <a href="index.html" class="logo">
+                <img src="images/ullal_darga_logo.png" alt="Ullal Dargah Emblem">
+                <div class="logo-text">
+                    <h2>Ullal Dargah</h2>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <div class="mobile-nav-header">
+                    <span class="mobile-nav-title"><img src="images/ullal_darga_logo.png" alt="Ullal Dargah Emblem" style="height:32px; width:auto; vertical-align:middle; margin-right:8px;"> Ullal Dargah</span>
+                    <button class="nav-close-btn" id="navCloseBtn" aria-label="Close navigation menu"><i class="fas fa-times"></i></button>
+                </div>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+<li class="dropdown">
+    <a href="#" class="nav-link">
+        About <i class="fas fa-chevron-down"></i>
+    </a>
+
+    <ul class="dropdown-menu">
+        <li><a href="history.html">History</a></li>
+        <li><a href="president.html">President</a></li>
+        <li><a href="khazi.html">Khazi</a></li>
+    </ul>
+</li>                    <li><a href="events.html" class="nav-link">Events</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                <!-- <li><a href="dua.html" class="nav-link">Du'a Wall</a></li> -->
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="mobile-donate-li"><a href="contact.html#donation" class="donate-btn mobile-donate-btn">Donate Now</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+                <a href="contact.html#donation" class="donate-btn">Donate</a>
+                <div class="menu-btn" id="menuBtn" role="button" aria-label="Toggle menu" aria-expanded="false"><i class="fas fa-bars"></i></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <!-- Page Header (Background image removed, gradient placeholder in CSS) -->
+        <section class="page-header gallery-bg" id="particles-js">
+            <div class="hero-overlay"></div>
+            <h1>Visual Journey</h1>
+            <p>Explore moments, architecture, and spiritual gatherings at Ullal Dargah</p>
+        </section>
+
+        <section id="gallery" class="gallery reveal">
+            <div class="section-heading">
+                <h2>Photo Gallery</h2>
+                <p>Capturing the serene environment and sacred architecture</p>
+            </div>
+            <div class="gallery-grid">
+                <a data-fslightbox="gallery" href="images/fviewdargah.jpeg"><img src="images/fviewdargah.jpeg" alt="Dargah Front View" class="gallery-img" loading="lazy"></a>
+                <a data-fslightbox="gallery" href="images/madanihall.jpeg"><img src="images/madanihall.jpeg" alt="Madani Commercial Complex & Hall" class="gallery-img" loading="lazy"></a>
+                <a data-fslightbox="gallery" href="images/sviewdargah.jpeg"><img src="images/sviewdargah.jpeg" alt="Dargah Side View" class="gallery-img" loading="lazy"></a>
+                <a data-fslightbox="gallery" href="images/waterdargah.jpeg"><img src="images/waterdargah.jpeg" alt="Waterfront View" class="gallery-img" loading="lazy"></a>
+            </div>
+        </section>
+
+        <section class="video-gallery reveal">
+            <div class="section-heading">
+                <h2>Video Gallery</h2>
+                <p>Watch swalat majlis, speeches, and documentary films</p>
+            </div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/3hQIiuoClM8" title="Urs Celebration" allowfullscreen loading="lazy"></iframe>
+                    <h3>Urs Celebration</h3>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/rOIZZUGuNgw" title="Islamic Speech" allowfullscreen loading="lazy"></iframe>
+                    <h3>Islamic Speech</h3>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/O0RzhP7tQfY" title="Documentary" allowfullscreen loading="lazy"></iframe>
+                    <h3>Documentary</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+     <footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-col footer-about">
+            <img src="images/ullal_darga_logo.png" alt="Ullal Dargah Logo" class="footer-logo">
+
+            <p>
+                A sacred place of faith, spirituality, peace, and blessings for devotees from around the world.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="dua.html">Du'a Wall</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contact Info</h3>
+            <p>📍 Ullal Darga Road, Mangalore, Karnataka 575020</p>
+            <p>📞 +91 9113004135</p>
+            <p>✉ info@ullaldargah.com</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/sayyidmadanidargaullal"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/ULLALDARGAOFFICIAL"><i class="fab fa-youtube"></i></a>
+                <a href="https://wa.me/+919113004135"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Ullal Dargah. All Rights Reserved.</p>
+    </div>
+</footer>
+
+    <button id="topBtn" aria-label="Back to top">↑</button>
+    <a href="https://wa.me/+919113004135" class="whatsapp" target="_blank" aria-label="Contact on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

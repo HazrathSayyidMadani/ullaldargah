@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Community Du'a Wall - Submit prayer requests and join fellow devotees in saying Amin.">
+    <title>Ullal Dargah - Du'a Request Wall</title>
+
+    <!-- Anti-Flash Theme Script -->
+    <script>
+        (function() {
+            var savedTheme = localStorage.getItem('theme');
+            var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div id="preloader" aria-hidden="true">
+        <div class="loader-content">
+            <i class="fas fa-moon"></i>
+            <h2>Ullal Dargah</h2>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="top-left">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="current-date"></span>
+            </div>
+            <div class="top-right">
+                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://youtube.com/ULLALDARGAOFFICIAL" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://instagram.com/sayyidmadanidargaullal" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/+919113004135" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <nav class="navbar" role="navigation" aria-label="Main Navigation">
+            <a href="index.html" class="logo">
+                <img src="images/ullal_darga_logo.png" alt="Ullal Dargah Emblem">
+                <div class="logo-text">
+                    <h2>Ullal Dargah</h2>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <div class="mobile-nav-header">
+                    <span class="mobile-nav-title"><img src="images/ullal_darga_logo.png" alt="Ullal Dargah Emblem" style="height:32px; width:auto; vertical-align:middle; margin-right:8px;"> Ullal Dargah</span>
+                    <button class="nav-close-btn" id="navCloseBtn" aria-label="Close navigation menu"><i class="fas fa-times"></i></button>
+                </div>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="history.html" class="nav-link">History</a></li>
+                <li><a href="events.html" class="nav-link">Events</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="dua.html" class="nav-link active">Du'a Wall</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="mobile-donate-li"><a href="contact.html#donation" class="donate-btn mobile-donate-btn">Donate Now</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+                <a href="contact.html#donation" class="donate-btn">Donate</a>
+                <div class="menu-btn" id="menuBtn" role="button" aria-label="Toggle menu" aria-expanded="false"><i class="fas fa-bars"></i></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <!-- Page Header (Background image removed, gradient placeholder in CSS) -->
+        <section class="page-header contact-bg" id="particles-js">
+            <div class="hero-overlay"></div>
+            <h1>Du'a Request Wall</h1>
+            <p>Submit your prayer requests and join the global community in saying Amin</p>
+        </section>
+
+        <section class="dua-section reveal">
+            <div class="section-heading">
+                <h2>Community Du'a Wall</h2>
+                <p>Share your prayer requests with fellow devotees. Public requests appear after administrative review.</p>
+            </div>
+
+            <div class="dua-layout">
+                <div class="dua-form-card">
+                    <h3><i class="fas fa-pen-fancy" style="color:var(--accent); margin-right:8px;"></i> Submit a Request</h3>
+                    <p>Your du'a will be reviewed before appearing on the public wall.</p>
+                    <form class="dua-form" id="duaForm">
+                        <input type="text" id="duaName" placeholder="Your Name" required>
+                        <input type="text" id="duaLocation" placeholder="Your Location (City, Country)" required>
+                        <textarea id="duaMessage" rows="4" placeholder="Write your du'a request here..." required></textarea>
+                        <label class="dua-checkbox">
+                            <input type="checkbox" id="duaPublic" checked>
+                            Display publicly on the Du'a Wall after approval
+                        </label>
+                        <button type="submit" class="primary-btn" style="border:none; cursor:pointer; width:100%;">Submit Du'a Request</button>
+                    </form>
+                </div>
+
+                <div class="dua-wall-container">
+                    <h3><i class="fas fa-hands-praying" style="color:var(--accent); margin-right:8px;"></i> Approved Prayer Requests</h3>
+                    <p>Click "Say Amin" to join in prayer with the community.</p>
+                    <div class="dua-wall" id="duaWall">
+                        <p style="color:var(--text-muted); text-align:center;">Loading du'a requests...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>🕌 Ullal Dargah</h3>
+                <p>A sacred place of faith, spirituality, peace, and blessings for devotees from around the world.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="dua.html">Du'a Wall</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p>📍 Ullal Darga Road, Mangalore, Karnataka 575020</p>
+                <p>📞 +91 9113004135</p>
+                <p>✉ info@ullaldargah.com</p>
+            </div>
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/sayyidmadanidargaullal" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/ULLALDARGAOFFICIAL" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://wa.me/+919113004135" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Ullal Dargah. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <button id="topBtn" aria-label="Back to top">↑</button>
+    <a href="https://wa.me/+919113004135" class="whatsapp" target="_blank" aria-label="Contact on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
