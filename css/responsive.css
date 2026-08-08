@@ -1,59 +1,67 @@
-/* ===========================================================
-   PART 1 - GLOBAL + HEADER + NAVBAR + HERO
-   Mobile First Responsive CSS
-=========================================================== */
-
-/* ===========================
-   GLOBAL
-=========================== */
+/*==================================================
+    GLOBAL RESET
+==================================================*/
 
 *,
 *::before,
 *::after{
+    margin:0;
+    padding:0;
     box-sizing:border-box;
 }
 
 html{
     scroll-behavior:smooth;
     -webkit-text-size-adjust:100%;
-}
-
-body{
-    margin:0;
-    width:100%;
     overflow-x:hidden;
 }
 
+body{
+    width:100%;
+    overflow-x:hidden;
+    font-family:inherit;
+}
+
 img{
+    display:block;
     max-width:100%;
     height:auto;
-    display:block;
 }
 
 a{
     text-decoration:none;
+    color:inherit;
 }
 
-/* ===========================
-   HEADER
-=========================== */
+ul{
+    list-style:none;
+}
+
+.container,
+.wrapper{
+    width:min(1400px,100%);
+    margin:auto;
+    padding-inline:20px;
+}
+
+/*==================================================
+    HEADER
+==================================================*/
 
 .main-header{
-    position:fixed;
+    position:sticky;
     top:0;
-    left:0;
     width:100%;
     z-index:9999;
-    transition:.35s;
+    transition:.35s ease;
 }
 
 .top-bar{
-    width:100%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:10px 5%;
     flex-wrap:wrap;
+    padding:10px 5%;
 }
 
 .top-left,
@@ -63,776 +71,276 @@ a{
     gap:15px;
 }
 
-/* ===========================
-   NAVBAR
-=========================== */
+/*==================================================
+    NAVBAR
+==================================================*/
 
 .navbar{
-
-width:100%;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:14px 5%;
-
-}
-
-.logo{
-
-display:flex;
-
-align-items:center;
-
-gap:12px;
-
-min-width:0;
-
-}
-
-.logo img{
-
-width:58px;
-
-height:58px;
-
-object-fit:contain;
-
-flex-shrink:0;
-
-}
-
-.logo-text{
-
-display:flex;
-
-align-items:center;
-
-}
-
-.logo-text h2{
-
-margin:0;
-
-font-size:24px;
-
-white-space:nowrap;
-
-}
-
-.nav-links{
-
-display:flex;
-
-align-items:center;
-
-gap:28px;
-
-list-style:none;
-
-margin:0;
-
-padding:0;
-
-}
-
-.nav-links li{
-
-position:relative;
-
-}
-
-.nav-links a{
-
-display:block;
-
-padding:10px 0;
-
-font-size:16px;
-
-}
-
-.nav-actions{
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
-}
-
-.menu-btn{
-
-display:none;
-
-cursor:pointer;
-
-font-size:24px;
-
-}
-
-/* ===========================
-   HERO
-=========================== */
-
-.hero{
-
-position:relative;
-
-width:100%;
-
-min-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background-position:center;
-
-background-repeat:no-repeat;
-
-background-size:cover;
-
-overflow:hidden;
-
-padding-top:120px;
-
-}
-
-.hero-content{
-
-width:100%;
-
-max-width:900px;
-
-padding:30px;
-
-text-align:center;
-
-z-index:2;
-
-}
-
-.hero-content h1{
-
-font-size:58px;
-
-line-height:1.2;
-
-margin-bottom:20px;
-
-}
-
-.hero-content p{
-
-font-size:20px;
-
-line-height:1.8;
-
-margin-bottom:35px;
-
-}
-
-.hero-buttons{
-
-display:flex;
-
-justify-content:center;
-
-gap:20px;
-
-flex-wrap:wrap;
-
-}
-
-/* ===========================
-   TABLET
-=========================== */
-
-@media(max-width:991px){
-
-.navbar{
-
-padding:14px 25px;
-
-}
-
-.logo img{
-
-width:50px;
-
-height:50px;
-
-}
-
-.logo-text h2{
-
-font-size:20px;
-
-}
-
-.nav-links{
-
-gap:18px;
-
-}
-
-.hero{
-
-padding-top:100px;
-
-}
-
-.hero-content{
-
-max-width:700px;
-
-}
-
-.hero-content h1{
-
-font-size:42px;
-
-}
-
-.hero-content p{
-
-font-size:18px;
-
-}
-
-}
-
-/* ===========================
-   MOBILE
-=========================== */
-
-@media(max-width:768px){
-
-.top-bar{
-
-display:none;
-
-}
-
-.main-header{
-
-width:100%;
-
-}
-
-.navbar{
-
-padding:12px 18px;
-
-height:72px;
-
-}
-
-.logo{
-
-flex:1;
-
-overflow:hidden;
-
-}
-
-.logo img{
-
-width:42px;
-
-height:42px;
-
-}
-
-.logo-text h2{
-
-font-size:18px;
-
-white-space:nowrap;
-
-overflow:hidden;
-
-text-overflow:ellipsis;
-
-}
-
-.nav-actions{
-
-gap:8px;
-
-}
-
-.nav-actions .donate-btn{
-
-display:none;
-
-}
-
-#themeToggle{
-
-display:none;
-
-}
-
-.menu-btn{
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-width:40px;
-
-height:40px;
-
-font-size:22px;
-
-}
-
-.nav-links{
-
-position:fixed;
-
-top:0;
-
-right:-100%;
-
-width:290px;
-
-max-width:85%;
-
-height:100vh;
-
-background:var(--bg-surface);
-
-display:flex;
-
-flex-direction:column;
-
-align-items:flex-start;
-
-padding:90px 20px 30px;
-
-gap:8px;
-
-transition:.35s;
-
-overflow-y:auto;
-
-z-index:99999;
-
-}
-
-.nav-links.open{
-
-right:0;
-
-}
-
-.nav-links li{
-
-width:100%;
-
-}
-
-.nav-links a{
-
-width:100%;
-
-padding:14px 16px;
-
-border-radius:8px;
-
-}
-
-.mobile-nav-header{
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-width:100%;
-
-margin-bottom:15px;
-
-padding-bottom:15px;
-
-}
-
-.hero{
-
-min-height:100svh;
-
-padding:90px 20px 50px;
-
-background-position:center center;
-
-background-size:cover;
-
-}
-
-.hero-content{
-
-padding:10px;
-
-}
-
-.hero-content h1{
-
-font-size:34px;
-
-line-height:1.3;
-
-margin-bottom:15px;
-
-}
-
-.hero-content p{
-
-font-size:16px;
-
-line-height:1.7;
-
-margin-bottom:25px;
-
-}
-
-.hero-buttons{
-
-flex-direction:column;
-
-gap:15px;
-
-width:100%;
-
-}
-
-.primary-btn,
-.secondary-btn{
-
-width:100%;
-
-max-width:320px;
-
-margin:auto;
-
-}
-
-}
-
-/* ===========================
-   SMALL MOBILE
-=========================== */
-
-@media(max-width:480px){
-
-.navbar{
-
-padding:10px 15px;
-
-}
-
-.logo img{
-
-width:38px;
-
-height:38px;
-
-}
-
-.logo-text h2{
-
-font-size:16px;
-
-}
-
-.hero{
-
-padding:80px 16px 40px;
-
-}
-
-.hero-content h1{
-
-font-size:28px;
-
-}
-
-.hero-content p{
-
-font-size:15px;
-
-}
-
-.hero-buttons{
-
-gap:12px;
-
-}
-
-}
-
-/* ===========================
-   EXTRA SMALL
-=========================== */
-
-@media(max-width:360px){
-
-.logo-text h2{
-
-font-size:15px;
-
-}
-
-.logo img{
-
-width:35px;
-
-height:35px;
-
-}
-
-.hero-content h1{
-
-font-size:24px;
-
-}
-
-.hero-content p{
-
-font-size:14px;
-
-}
-
-.nav-links{
-
-width:260px;
-
-}
-
-}
-/* ==========================================================
-   PART 2 - TABLET RESPONSIVE (1024px and below)
-========================================================== */
-
-@media (max-width:1024px){
-
-/* ================= NAVBAR ================= */
-
-.top-bar{
-    padding:8px 20px;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-    text-align:center;
-}
-
-.navbar{
-    height:70px;
-    padding:0 20px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
+    width:100%;
+    height:80px;
+    padding:0 5%;
 }
 
 .logo{
     display:flex;
     align-items:center;
     gap:12px;
+    flex:1;
+    min-width:0;
+}
+
+.logo img{
+    width:58px;
+    height:58px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
+.logo-text{
+    overflow:hidden;
+}
+
+.logo-text h2{
+    font-size:24px;
+    font-weight:700;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links a{
+    display:block;
+    padding:12px 0;
+    transition:.3s;
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.menu-btn{
+    display:none;
+    width:42px;
+    height:42px;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    font-size:24px;
+    border:none;
+    background:none;
+}
+
+/*==================================================
+    TABLET
+==================================================*/
+
+@media (max-width:991px){
+
+.top-bar{
+    display:none;
+}
+
+.navbar{
+    height:72px;
+    padding:0 20px;
 }
 
 .logo img{
     width:48px;
     height:48px;
-    object-fit:contain;
 }
 
 .logo-text h2{
-    font-size:1.25rem;
+    font-size:20px;
 }
-
-/* ================= MENU BUTTON ================= */
 
 .menu-btn{
     display:flex;
-    align-items:center;
-    justify-content:center;
-    width:45px;
-    height:45px;
-    font-size:24px;
-    color:#fff;
-    cursor:pointer;
-    z-index:2500;
 }
 
-/* ================= MOBILE DRAWER ================= */
+.nav-actions .donate-btn,
+#themeToggle{
+    display:none;
+}
 
 .nav-links{
     position:fixed;
     top:0;
     right:-100%;
-    width:300px;
+    width:320px;
     max-width:85%;
     height:100vh;
     background:#fff;
     flex-direction:column;
     align-items:flex-start;
+    gap:0;
     padding:25px;
     overflow-y:auto;
-    transition:.4s;
-    z-index:2200;
-    box-shadow:-10px 0 35px rgba(0,0,0,.18);
+    transition:.35s ease;
+    z-index:99999;
+    box-shadow:-10px 0 30px rgba(0,0,0,.15);
 }
 
 .nav-links.open{
     right:0;
 }
 
+.mobile-nav-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    padding-bottom:18px;
+    margin-bottom:18px;
+    border-bottom:1px solid #e5e5e5;
+}
+
+.mobile-nav-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+}
+
+.mobile-nav-title img{
+    width:34px;
+}
+
+.nav-close-btn{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+}
+
 .nav-links li{
     width:100%;
-    list-style:none;
 }
 
-.nav-links li a{
-    display:block;
+.nav-links a{
     width:100%;
-    padding:14px 15px;
+    padding:15px;
     border-radius:8px;
-    font-size:16px;
 }
-
-.nav-links li a:hover{
-    background:#f3f4f6;
-}
-
-/* ================= DROPDOWN ================= */
 
 .dropdown-menu{
     position:static;
-    width:100%;
     display:none;
-    background:#f9f9f9;
-    box-shadow:none;
+    width:100%;
     margin-top:6px;
+    background:#f8f8f8;
     border-radius:8px;
+    box-shadow:none;
 }
 
 .dropdown.active .dropdown-menu{
     display:block;
 }
 
-.dropdown-menu li a{
+.dropdown-menu a{
     padding:12px 18px;
 }
 
-/* ================= HERO ================= */
-
-.hero{
-    width:100%;
-    min-height:70vh;
-    background-position:center center;
-    background-size:cover;
-    background-repeat:no-repeat;
+.mobile-nav-header{
     display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:80px 25px;
 }
 
-.hero-content{
+.mobile-donate-li{
+    display:block;
     width:100%;
-    max-width:700px;
-    text-align:center;
-    padding:35px;
+    margin-top:12px;
 }
 
-.hero-content h1{
-    font-size:2.5rem;
-    line-height:1.3;
+.nav-links.open .nav-link,
+.nav-links.open .dropdown > a{
+    color:#111827;
 }
 
-.hero-content p{
-    font-size:16px;
+.nav-links.open .nav-link:hover,
+.nav-links.open .nav-link.active{
+    background:#f0fdf4;
+    color:#065F46;
 }
 
-.hero-buttons{
-    justify-content:center;
+.nav-links.open .dropdown-menu a{
+    color:#374151;
 }
 
-/* ================= LEADERS ================= */
-
-.leaders-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:25px;
+.nav-links.open .dropdown-menu a:hover{
+    background:#ecfdf5;
+    color:#065F46;
 }
 
-/* ================= NEWS ================= */
-
-.news-slider{
-    padding-bottom:50px;
+.nav-close-btn{
+    background:#f3f4f6;
+    color:#111827;
 }
 
-/* ================= GALLERY ================= */
-
-.gallery-grid{
-    grid-template-columns:repeat(2,1fr);
+[data-theme="dark"] .nav-links,
+body.dark-mode .nav-links{
+    background:var(--bg-surface,#03261D);
+    box-shadow:-10px 0 30px rgba(0,0,0,.4);
 }
 
-/* ================= CONTACT ================= */
-
-.contact-container{
-    grid-template-columns:1fr;
-    gap:35px;
+[data-theme="dark"] .nav-links.open .nav-link,
+[data-theme="dark"] .nav-links.open .dropdown > a,
+body.dark-mode .nav-links.open .nav-link,
+body.dark-mode .nav-links.open .dropdown > a{
+    color:var(--text-main,#F8FAFC);
 }
 
-/* ================= FOOTER ================= */
-
-.footer-container{
-    grid-template-columns:repeat(2,1fr);
-    gap:35px;
+[data-theme="dark"] .nav-links.open .nav-link:hover,
+[data-theme="dark"] .nav-links.open .nav-link.active,
+body.dark-mode .nav-links.open .nav-link:hover,
+body.dark-mode .nav-links.open .nav-link.active{
+    background:rgba(16,185,129,.15);
+    color:var(--primary,#34D399);
 }
 
-/* ================= ADMIN ================= */
-
-.dashboard-container{
-    grid-template-columns:1fr;
+[data-theme="dark"] .nav-links.open .dropdown-menu,
+body.dark-mode .nav-links.open .dropdown-menu{
+    background:var(--bg-primary,#021A14);
 }
 
-.admin-sidebar{
-    display:flex;
-    overflow:auto;
+[data-theme="dark"] .nav-links.open .dropdown-menu a,
+body.dark-mode .nav-links.open .dropdown-menu a{
+    color:var(--text-muted,#CBD5E1);
 }
 
-.stats-grid{
-    grid-template-columns:repeat(2,1fr);
+[data-theme="dark"] .mobile-nav-header,
+body.dark-mode .mobile-nav-header{
+    border-bottom-color:rgba(255,255,255,.1);
+}
+
+[data-theme="dark"] .nav-close-btn,
+body.dark-mode .nav-close-btn{
+    background:rgba(255,255,255,.1);
+    color:var(--text-main,#F8FAFC);
 }
 
 }
-/* ==========================================================
-   PART 3 - MOBILE RESPONSIVE (767px and below)
-========================================================== */
 
-@media (max-width:767px){
+/*==================================================
+    MOBILE
+==================================================*/
 
-/* ================= HEADER ================= */
-
-.main-header{
-    width:100%;
-}
-
-.top-bar{
-    display:none;
-}
+@media (max-width:480px){
 
 .navbar{
     height:65px;
@@ -840,208 +348,564 @@ width:260px;
 }
 
 .logo img{
-    width:42px;
-    height:42px;
+    width:40px;
+    height:40px;
 }
 
 .logo-text h2{
-    font-size:18px;
+    font-size:17px;
 }
 
-/* ================= MOBILE MENU ================= */
+.menu-btn{
+    width:40px;
+    height:40px;
+    font-size:22px;
+}
 
 .nav-links{
-    width:270px;
+    width:280px;
     padding:20px;
 }
 
-.mobile-nav-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    width:100%;
-    margin-bottom:20px;
-    padding-bottom:15px;
-    border-bottom:1px solid #ddd;
-}
-
-.mobile-nav-title{
-    display:flex;
-    align-items:center;
-    font-weight:600;
-    font-size:18px;
-}
-
 .mobile-nav-title img{
-    width:34px;
-    margin-right:10px;
+    width:30px;
 }
 
-.nav-close-btn{
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    border:none;
-    cursor:pointer;
-    background:#f3f4f6;
 }
-
-.nav-links li{
-    width:100%;
-}
-
-.nav-links li a{
-    padding:15px;
-    font-size:16px;
-}
-
-.mobile-donate-btn{
-    margin-top:20px;
-    width:100%;
-    text-align:center;
-}
-
-/* ================= HERO ================= */
+/*==================================================
+    HERO SECTION
+==================================================*/
 
 .hero{
-    min-height:60vh;
-    padding:70px 15px;
-    background-size:cover;
+    position:relative;
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:140px 20px 80px;
+    overflow:hidden;
+    background-repeat:no-repeat;
     background-position:center;
+    background-size:cover;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    z-index:1;
 }
 
 .hero-content{
+    position:relative;
+    z-index:2;
     width:100%;
-    padding:25px 20px;
+    max-width:900px;
+    text-align:center;
+    padding:20px;
 }
 
 .hero-content h1{
-    font-size:32px;
-    line-height:1.3;
+    font-size:clamp(2.5rem,5vw,4rem);
+    line-height:1.2;
+    margin-bottom:20px;
+    font-weight:700;
 }
 
 .hero-content p{
-    font-size:15px;
-    line-height:1.7;
+    max-width:700px;
+    margin:0 auto 35px;
+    font-size:clamp(1rem,2vw,1.2rem);
+    line-height:1.8;
 }
 
 .hero-buttons{
     display:flex;
-    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:18px;
+}
+
+/*==================================================
+    BUTTONS
+==================================================*/
+
+.primary-btn,
+.secondary-btn{
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    padding:14px 30px;
+    border-radius:50px;
+    transition:.35s;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+    transform:translateY(-3px);
+}
+
+/*==================================================
+    COMMON SECTIONS
+==================================================*/
+
+section{
+    width:100%;
+    padding:90px 0;
+}
+
+.section-heading{
+    text-align:center;
+    max-width:750px;
+    margin:0 auto 60px;
+}
+
+.section-heading h2{
+    font-size:clamp(2rem,4vw,3rem);
+    margin-bottom:15px;
+    font-weight:700;
+}
+
+.section-heading p{
+    font-size:1rem;
+    line-height:1.8;
+}
+
+/*==================================================
+    COMMON GRID
+==================================================*/
+
+.grid{
+    display:grid;
+    gap:30px;
+}
+
+.grid-2{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.grid-3{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.grid-4{
+    grid-template-columns:repeat(4,1fr);
+}
+
+/*==================================================
+    CARD
+==================================================*/
+
+.card{
+    border-radius:16px;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+/*==================================================
+    COMMON IMAGE
+==================================================*/
+
+.image-cover{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/*==================================================
+    TABLET
+==================================================*/
+
+@media (max-width:991px){
+
+.hero{
+    min-height:80vh;
+    padding:120px 25px 70px;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero-buttons{
     gap:15px;
+}
+
+.grid-4{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.grid-3{
+    grid-template-columns:repeat(2,1fr);
+}
+
+section{
+    padding:80px 0;
+}
+
+}
+
+/*==================================================
+    MOBILE
+==================================================*/
+
+@media (max-width:767px){
+
+.hero{
+    min-height:70vh;
+    padding:100px 18px 60px;
+}
+
+.hero-content{
+    padding:10px;
+}
+
+.hero-buttons{
+    flex-direction:column;
+    width:100%;
 }
 
 .primary-btn,
 .secondary-btn{
     width:100%;
+    max-width:320px;
 }
 
-/* ================= SECTIONS ================= */
+.grid-2,
+.grid-3,
+.grid-4{
+    grid-template-columns:1fr;
+}
 
 section{
-    padding:60px 18px;
+    padding:70px 0;
 }
 
-.section-heading h2{
-    font-size:30px;
+.section-heading{
+    margin-bottom:40px;
 }
 
-.section-heading p{
-    font-size:15px;
 }
 
-/* ================= PRAYER ================= */
+/*==================================================
+    SMALL MOBILE
+==================================================*/
+
+@media (max-width:480px){
+
+.hero{
+    min-height:60vh;
+    padding:90px 15px 50px;
+}
+
+.hero-content p{
+    line-height:1.7;
+}
+
+.primary-btn,
+.secondary-btn{
+    padding:13px 22px;
+}
+
+section{
+    padding:55px 0;
+}
+
+.section-heading{
+    margin-bottom:35px;
+}
+
+}
+/*==================================================
+    HOME PRAYER
+==================================================*/
 
 .home-prayer-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:25px;
 }
 
 .home-prayer-item{
-    padding:18px 10px;
+    padding:25px 20px;
+    text-align:center;
+    border-radius:16px;
+    transition:.35s;
 }
 
 .home-prayer-item strong{
-    font-size:20px;
+    display:block;
+    font-size:32px;
+    margin-bottom:10px;
 }
 
-/* ================= LEADERS ================= */
+/*==================================================
+    LEADERS
+==================================================*/
 
 .leaders-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.leader-card{
+    overflow:hidden;
+    border-radius:18px;
+}
+
+.leader-card img{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+}
+
+/*==================================================
+    NEWS
+==================================================*/
+
+.news-slider{
+    width:100%;
+    padding-bottom:60px;
+}
+
+.news-slider .swiper-button-next,
+.news-slider .swiper-button-prev{
+    transition:.3s;
+}
+
+/*==================================================
+    GALLERY
+==================================================*/
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.gallery-img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    border-radius:14px;
+}
+
+/*==================================================
+    VIDEO
+==================================================*/
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.video-card iframe{
+    width:100%;
+    aspect-ratio:16/9;
+    border:0;
+    border-radius:12px;
+}
+
+/*==================================================
+    DONATION
+==================================================*/
+
+.donation-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:35px;
+}
+
+/*==================================================
+    CONTACT
+==================================================*/
+
+.contact-container{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:45px;
+}
+
+.contact-form{
+    padding:30px;
+    border-radius:18px;
+}
+
+/*==================================================
+    STATS
+==================================================*/
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.stat-box{
+    padding:30px;
+    text-align:center;
+    border-radius:18px;
+}
+
+.stat-box h2{
+    font-size:42px;
+    margin-bottom:8px;
+}
+
+/*==================================================
+    FOOTER
+==================================================*/
+
+.footer{
+    padding:70px 0 30px;
+}
+
+.footer-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:35px;
+}
+
+.footer-logo{
+    width:90px;
+}
+
+.social-icons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+/*==================================================
+    TABLE
+==================================================*/
+
+.table-container{
+    width:100%;
+    overflow-x:auto;
+}
+
+.admin-table{
+    width:100%;
+    min-width:700px;
+    border-collapse:collapse;
+}
+
+/*==================================================
+    DASHBOARD
+==================================================*/
+
+.dashboard-container{
+    display:grid;
+    grid-template-columns:260px 1fr;
+    gap:30px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+/*==================================================
+    TABLET
+==================================================*/
+
+@media (max-width:991px){
+
+.home-prayer-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.leaders-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.gallery-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.video-grid,
+.donation-grid,
+.contact-container{
     grid-template-columns:1fr;
+}
+
+.stats{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.footer-container{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.dashboard-container{
+    grid-template-columns:1fr;
+}
+
+.stats-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.admin-sidebar{
+    display:flex;
+    overflow-x:auto;
+}
+
+}
+
+/*==================================================
+    MOBILE
+==================================================*/
+
+@media (max-width:767px){
+
+.home-prayer-grid,
+.leaders-grid,
+.gallery-grid,
+.stats,
+.footer-container,
+.stats-grid{
+    grid-template-columns:1fr;
+}
+
+.home-prayer-item{
+    padding:18px;
+}
+
+.home-prayer-item strong{
+    font-size:28px;
 }
 
 .leader-card img{
     height:320px;
 }
 
-/* ================= NEWS ================= */
+.gallery-img{
+    height:230px;
+}
 
 .news-slider .swiper-button-next,
 .news-slider .swiper-button-prev{
     display:none;
 }
 
-.news-slider{
-    padding-bottom:45px;
-}
-
-/* ================= STATS ================= */
-
-.stats{
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-}
-
-.stat-box{
-    padding:20px;
-}
-
-.stat-box h2{
-    font-size:30px;
-}
-
-/* ================= GALLERY ================= */
-
-.gallery-grid{
-    grid-template-columns:1fr;
-}
-
-.gallery-img{
-    height:240px;
-}
-
-/* ================= VIDEO ================= */
-
-.video-grid{
-    grid-template-columns:1fr;
-}
-
-/* ================= DONATION ================= */
-
-.donation-grid{
-    grid-template-columns:1fr;
-}
-
-/* ================= CONTACT ================= */
-
-.contact-container{
-    grid-template-columns:1fr;
-}
-
 .contact-form{
     padding:20px;
 }
 
-/* ================= FOOTER ================= */
-
 .footer{
-    padding:50px 20px 20px;
-}
-
-.footer-container{
-    grid-template-columns:1fr;
     text-align:center;
 }
 
@@ -1053,19 +917,8 @@ section{
     justify-content:center;
 }
 
-/* ================= FLOAT BUTTONS ================= */
-
-#topBtn,
-.whatsapp{
-    width:48px;
-    height:48px;
-    font-size:20px;
-}
-
-/* ================= TABLE ================= */
-
 .table-container{
-    overflow:auto;
+    overflow-x:auto;
 }
 
 .admin-table{
@@ -1073,129 +926,23 @@ section{
 }
 
 }
-/* ==========================================================
-   PART 4 - SMALL MOBILE (480px and below)
-========================================================== */
+
+/*==================================================
+    SMALL MOBILE
+==================================================*/
 
 @media (max-width:480px){
 
-*{
-    box-sizing:border-box;
-}
-
-html,
-body{
-    width:100%;
-    overflow-x:hidden;
-}
-
-/* ================= NAVBAR ================= */
-
-.navbar{
-    height:60px;
-    padding:0 12px;
-}
-
-.logo{
-    gap:8px;
-}
-
-.logo img{
-    width:36px;
-    height:36px;
-}
-
-.logo-text h2{
-    font-size:16px;
-    white-space:nowrap;
-}
-
-.menu-btn{
-    width:40px;
-    height:40px;
-    font-size:20px;
-}
-
-.nav-links{
-    width:260px;
-    padding:18px;
-}
-
-.mobile-nav-title{
-    font-size:16px;
-}
-
-.mobile-nav-title img{
-    width:28px;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    min-height:55vh;
-    padding:50px 15px;
-    background-size:cover;
-    background-position:center center;
-}
-
-.hero-content{
-    padding:20px 15px;
-}
-
-.hero-content h1{
-    font-size:26px;
-    line-height:1.4;
-}
-
-.hero-content p{
-    font-size:14px;
-}
-
-.badge{
-    font-size:12px;
-    padding:6px 12px;
-}
-
-.primary-btn,
-.secondary-btn{
-    width:100%;
-    padding:13px;
-    font-size:15px;
-}
-
-/* ================= SECTIONS ================= */
-
-section{
-    padding:45px 15px;
-}
-
-.section-heading h2{
-    font-size:26px;
-}
-
-.section-heading p{
-    font-size:14px;
-}
-
-/* ================= PRAYER ================= */
-
-.home-prayer-grid{
-    grid-template-columns:1fr;
-    gap:12px;
-}
-
-.home-prayer-item{
-    padding:15px;
-}
-
 .home-prayer-item strong{
-    font-size:22px;
+    font-size:24px;
 }
 
-/* ================= STATS ================= */
+.leader-card img{
+    height:280px;
+}
 
-.stats{
-    grid-template-columns:1fr;
+.gallery-img{
+    height:210px;
 }
 
 .stat-box{
@@ -1203,52 +950,11 @@ section{
 }
 
 .stat-box h2{
-    font-size:28px;
+    font-size:32px;
 }
-
-/* ================= LEADERS ================= */
-
-.leader-card img{
-    height:280px;
-}
-
-/* ================= GALLERY ================= */
-
-.gallery-grid{
-    grid-template-columns:1fr;
-}
-
-.gallery-img{
-    height:220px;
-}
-
-/* ================= VIDEO ================= */
-
-.video-card iframe{
-    width:100%;
-    aspect-ratio:16/9;
-}
-
-/* ================= FORMS ================= */
-
-.contact-form,
-.dua-form-card,
-.login-card{
-    padding:18px;
-}
-
-input,
-textarea,
-select,
-button{
-    width:100%;
-    font-size:16px;
-}
-
-/* ================= FOOTER ================= */
 
 .footer{
-    padding:40px 15px 20px;
+    padding:50px 0 20px;
 }
 
 .footer-logo{
@@ -1260,86 +966,327 @@ button{
 }
 
 .footer p,
-.footer li,
-.footer a{
+.footer a,
+.footer li{
     font-size:14px;
 }
 
-/* ================= FLOATING BUTTONS ================= */
-
 .whatsapp,
 #topBtn{
-    width:45px;
-    height:45px;
+    width:46px;
+    height:46px;
     font-size:18px;
 }
 
+}
+/*==================================================
+    CSS VARIABLES
+==================================================*/
+
+:root{
+
+    --container:1400px;
+
+    --radius-sm:8px;
+    --radius-md:14px;
+    --radius-lg:20px;
+
+    --transition:.35s ease;
+
+    --header-height:80px;
+}
+
+/*==================================================
+    COMMON ELEMENTS
+==================================================*/
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+    outline:none;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+}
+
+textarea{
+    resize:vertical;
+}
+
+iframe{
+    width:100%;
+    border:none;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+/*==================================================
+    FORMS
+==================================================*/
+
+.contact-form,
+.login-card,
+.dua-form-card{
+    width:100%;
+    border-radius:var(--radius-lg);
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select,
+.login-card input,
+.dua-form-card input{
+
+    width:100%;
+    padding:14px 16px;
+    border-radius:10px;
+    margin-bottom:16px;
+}
+
+/*==================================================
+    FLOATING BUTTONS
+==================================================*/
+
+.whatsapp,
+#topBtn{
+
+    position:fixed;
+    width:55px;
+    height:55px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+    z-index:999;
+
+    transition:var(--transition);
+}
+
 .whatsapp{
-    left:12px;
-    bottom:15px;
+
+    left:20px;
+    bottom:20px;
 }
 
 #topBtn{
-    right:12px;
-    bottom:15px;
+
+    right:20px;
+    bottom:20px;
 }
 
-/* ================= TABLE ================= */
+.whatsapp:hover,
+#topBtn:hover{
 
-.table-container{
-    overflow-x:auto;
+    transform:translateY(-4px);
 }
 
-.admin-table{
-    min-width:650px;
-}
-
-/* ================= IMAGES ================= */
+/*==================================================
+    IMAGE OPTIMIZATION
+==================================================*/
 
 img{
+
     max-width:100%;
     height:auto;
     display:block;
 }
 
-iframe{
+.image-cover{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/*==================================================
+    UTILITIES
+==================================================*/
+
+.hide{
+
+    display:none !important;
+}
+
+.show{
+
+    display:block !important;
+}
+
+.text-center{
+
+    text-align:center;
+}
+
+.w-100{
+
     width:100%;
 }
 
-}
+.mt-1{margin-top:10px;}
+.mt-2{margin-top:20px;}
+.mt-3{margin-top:30px;}
+.mt-4{margin-top:40px;}
 
-/* ==========================================================
-   EXTRA FIXES FOR ALL DEVICES
-========================================================== */
+.mb-1{margin-bottom:10px;}
+.mb-2{margin-bottom:20px;}
+.mb-3{margin-bottom:30px;}
+.mb-4{margin-bottom:40px;}
 
-html{
-    overflow-x:hidden;
-    scroll-behavior:smooth;
-}
+/*==================================================
+    TABLET
+==================================================*/
 
-body{
-    overflow-x:hidden;
-}
+@media (max-width:991px){
 
-img{
-    max-width:100%;
-    height:auto;
-}
+:root{
 
-.hero,
-.hero img{
-    width:100%;
-}
-
-section{
-    width:100%;
+    --header-height:72px;
 }
 
 .container,
 .wrapper{
-    width:100%;
-    max-width:1400px;
-    margin:auto;
-    padding-left:20px;
-    padding-right:20px;
+
+    padding-inline:18px;
 }
+
+.whatsapp,
+#topBtn{
+
+    width:50px;
+    height:50px;
+}
+
+}
+
+/*==================================================
+    MOBILE
+==================================================*/
+
+@media (max-width:767px){
+
+:root{
+
+    --header-height:65px;
+}
+
+.container,
+.wrapper{
+
+    padding-inline:15px;
+}
+
+.contact-form,
+.login-card,
+.dua-form-card{
+
+    padding:20px;
+}
+
+input,
+textarea,
+select,
+button{
+
+    font-size:16px;
+}
+
+.whatsapp{
+
+    left:15px;
+    bottom:15px;
+}
+
+#topBtn{
+
+    right:15px;
+    bottom:15px;
+}
+
+.whatsapp,
+#topBtn{
+
+    width:48px;
+    height:48px;
+    font-size:18px;
+}
+
+}
+
+/*==================================================
+    SMALL MOBILE
+==================================================*/
+
+@media (max-width:480px){
+
+.container,
+.wrapper{
+
+    padding-inline:12px;
+}
+
+.whatsapp,
+#topBtn{
+
+    width:44px;
+    height:44px;
+    font-size:17px;
+}
+
+.contact-form,
+.login-card,
+.dua-form-card{
+
+    padding:18px;
+}
+
+}
+
+/*==================================================
+    PERFORMANCE
+==================================================*/
+
+.hero,
+.card,
+.leader-card,
+.gallery-img,
+.primary-btn,
+.secondary-btn,
+.whatsapp,
+#topBtn{
+
+    will-change:transform;
+}
+
+html{
+
+    scroll-behavior:smooth;
+}
+
+body{
+
+    overflow-x:hidden;
+}
+
+section{
+
+    width:100%;
+}
+
+.hero img,
+img{
+
+    max-width:100%;
+}
+
+/*==================================================
+    END OF CSS
+==================================================*/
