@@ -1,209 +1,1031 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Events, Annual Urs Festival Schedule, and Daily Prayer Times at Ullal Dargah.">
-    <title>Ullal Dargah - Events & Prayer Times</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Events · Ullal Dargah</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Amiri&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ---------- RESET & VARIABLES ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --primary: #0F5132;
+      --primary-dark: #073B25;
+      --secondary: #D4AF37;
+      --gold-soft: #E7C873;
+      --cream: #F8F5ED;
+      --white: #FFFFFF;
+      --dark: #111814;
+      --text: #303832;
+      --muted: #6B746D;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Outfit', sans-serif;
+      --shadow: 0 20px 40px -12px rgba(0,0,0,0.08);
+      --transition: cubic-bezier(0.22, 1, 0.36, 1);
+      --radius: 12px;
+      --header-height: 70px;
+      --mobile-header-height: 60px;
+    }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body.dark {
+      --cream: #0C1F16;
+      --white: #10291D;
+      --text: #F5F1E8;
+      --muted: #B8B0A0;
+      --shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+      background: #07130E;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; height: auto; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+    }
+    section { padding: 60px 0; }
+    @media (max-width: 768px) {
+      section { padding: 50px 0; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 40px 0; }
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .section-sub {
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
+      color: var(--muted);
+      max-width: 640px;
+    }
+    .gold-line {
+      width: 60px;
+      height: 3px;
+      background: var(--secondary);
+      margin: 12px 0 20px;
+      border-radius: 4px;
+    }
+    @media (max-width: 480px) {
+      .gold-line { width: 40px; margin: 10px 0 16px; }
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: clamp(0.9rem, 1.2vw, 1rem);
+      cursor: pointer;
+      transition: all 0.3s var(--transition);
+      box-shadow: 0 4px 12px rgba(15,81,50,0.15);
+      min-height: 48px;
+      min-width: 44px;
+    }
+    @media (max-width: 480px) {
+      .btn { padding: 12px 20px; font-size: 0.9rem; min-height: 44px; width: 100%; }
+    }
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -8px rgba(15,81,50,0.25);
+    }
+    .btn-gold {
+      background: var(--secondary);
+      color: var(--dark);
+    }
+    .btn-gold:hover { background: #c09f2e; }
 
-    <!-- Anti-Flash Theme Script -->
-    <script>
-        (function() {
-            var savedTheme = localStorage.getItem('theme');
-            var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-            }
-        })();
-    </script>
+    /* ---------- HEADER ---------- */
+    .top-bar {
+      background: rgba(7, 59, 37, 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: #e8e0d0;
+      font-size: clamp(0.7rem, 1vw, 0.85rem);
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .top-bar .socials a {
+      margin-left: 12px;
+      color: #d4c9b0;
+      transition: 0.3s;
+      font-size: clamp(0.8rem, 1vw, 1rem);
+      display: inline-block;
+      padding: 4px;
+    }
+    @media (max-width: 480px) {
+      .top-bar .socials a { margin-left: 8px; }
+      .top-bar .date { font-size: 0.65rem; }
+    }
+    .top-bar .socials a:hover { color: var(--secondary); }
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 10px 0;
+      transition: all 0.4s var(--transition);
+      background: rgba(248, 245, 237, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      min-height: var(--header-height);
+    }
+    @media (max-width: 768px) {
+      .header { min-height: var(--mobile-header-height); padding: 8px 0; }
+    }
+    body.dark .header {
+      background: rgba(7, 19, 14, 0.8);
+    }
+    .header.scrolled {
+      padding: 6px 0;
+      background: rgba(248, 245, 237, 0.92);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      min-height: 60px;
+    }
+    @media (max-width: 768px) {
+      .header.scrolled { min-height: 54px; padding: 4px 0; }
+    }
+    body.dark .header.scrolled {
+      background: rgba(7, 19, 14, 0.92);
+    }
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 1.8vw, 1.3rem);
+      font-weight: 600;
+      color: var(--primary-dark);
+      flex-shrink: 0;
+    }
+    .logo img { 
+      height: clamp(32px, 4vw, 44px); 
+      width: auto; 
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 2vw, 28px);
+      list-style: none;
+      font-weight: 500;
+    }
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+      transition: 0.3s;
+      font-size: clamp(0.8rem, 1vw, 0.95rem);
+      white-space: nowrap;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: 0.3s var(--transition);
+    }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links .dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+    .nav-links .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 32px;
+      left: -12px;
+      background: var(--white);
+      padding: 12px 0;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      min-width: 160px;
+      border: 1px solid rgba(212,175,55,0.1);
+    }
+    .nav-links .dropdown:hover .dropdown-menu { display: block; }
+    .nav-links .dropdown-menu a {
+      display: block;
+      padding: 8px 24px;
+      font-weight: 400;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    .nav-links .dropdown-menu a:hover { background: rgba(212,175,55,0.05); }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: clamp(8px, 1.5vw, 16px);
+      flex-shrink: 0;
+    }
+    .header-actions .theme-toggle {
+      background: none;
+      border: none;
+      font-size: clamp(1rem, 1.2vw, 1.2rem);
+      color: var(--text);
+      cursor: pointer;
+      padding: 6px;
+      min-width: 40px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header-actions .donate-btn {
+      background: var(--secondary);
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: clamp(0.75rem, 0.9vw, 0.9rem);
+      color: var(--dark);
+      transition: 0.3s;
+      white-space: nowrap;
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    @media (max-width: 480px) {
+      .header-actions .donate-btn { padding: 4px 12px; font-size: 0.7rem; }
+      .header-actions .donate-btn i { font-size: 0.7rem; }
+    }
+    .header-actions .donate-btn:hover { background: #c09f2e; transform: scale(1.02); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      min-width: 44px;
+      min-height: 44px;
+      justify-content: center;
+      align-items: center;
+    }
+    .hamburger span {
+      width: 28px;
+      height: 2.5px;
+      background: var(--text);
+      border-radius: 4px;
+      transition: 0.3s;
+      display: block;
+    }
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ---------- MOBILE MENU ---------- */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 85%;
+      max-width: 360px;
+      height: 100vh;
+      height: 100dvh;
+      background: var(--primary-dark);
+      color: #f0ece0;
+      padding: 30px 24px;
+      transition: 0.5s var(--transition);
+      z-index: 9999;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .mobile-menu.open { right: 0; }
+    .mobile-menu .close-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #f0ece0;
+      float: right;
+      cursor: pointer;
+      padding: 8px;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-menu .logo-mobile { 
+      font-size: 1.6rem; 
+      font-family: var(--font-serif); 
+      margin-bottom: 30px;
+      padding-top: 10px;
+    }
+    .mobile-menu nav a {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 1.1rem;
+      font-weight: 400;
+      min-height: 50px;
+    }
+    .mobile-menu .dropdown-mobile a { padding-left: 20px; font-size: 0.95rem; }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 9998;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.4s;
+    }
+    .overlay.active { opacity: 1; pointer-events: auto; }
+
+    /* ---------- EVENTS HERO ---------- */
+    .events-hero {
+      min-height: 40vh;
+      min-height: 40dvh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #0a2e1f 100%);
+      position: relative;
+      color: white;
+      padding: 60px 0 40px;
+    }
+    @media (max-width: 768px) {
+      .events-hero { min-height: 35vh; padding: 50px 0 30px; }
+    }
+    @media (max-width: 480px) {
+      .events-hero { min-height: 30vh; padding: 40px 0 20px; }
+    }
+    .events-hero .container { position: relative; z-index: 2; }
+    .events-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      max-width: 780px;
+    }
+    .events-hero .gold-line { background: var(--secondary); }
+    .events-hero p {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      max-width: 540px;
+      opacity: 0.85;
+      margin-top: 12px;
+    }
+
+    /* ---------- COUNTDOWN CARD ---------- */
+    .countdown-card {
+      background: var(--white);
+      padding: clamp(24px, 3vw, 40px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      margin-top: -30px;
+      position: relative;
+      z-index: 3;
+      border-top: 4px solid var(--secondary);
+    }
+    @media (max-width: 768px) {
+      .countdown-card { margin-top: -20px; padding: 20px; }
+    }
+    @media (max-width: 480px) {
+      .countdown-card { margin-top: -15px; padding: 16px; border-top-width: 3px; }
+    }
+    .countdown-card h3 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      margin-bottom: 4px;
+    }
+    .countdown-card .sub {
+      color: var(--muted);
+      font-size: clamp(0.85rem, 1.2vw, 1rem);
+      margin-bottom: 20px;
+    }
+    @media (max-width: 480px) {
+      .countdown-card .sub { font-size: 0.8rem; margin-bottom: 14px; }
+    }
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(8px, 1.5vw, 16px);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    @media (max-width: 480px) {
+      .countdown-grid { gap: 6px; max-width: 100%; }
+    }
+    .countdown-item {
+      background: var(--cream);
+      padding: clamp(12px, 1.5vw, 20px) clamp(4px, 1vw, 12px);
+      border-radius: var(--radius);
+      border: 1px solid rgba(212,175,55,0.1);
+    }
+    @media (max-width: 480px) {
+      .countdown-item { padding: 10px 4px; }
+    }
+    .countdown-item .number {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+    @media (max-width: 480px) {
+      .countdown-item .number { font-size: 1.3rem; }
+    }
+    .countdown-item .label {
+      font-size: clamp(0.6rem, 1vw, 0.8rem);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    @media (max-width: 480px) {
+      .countdown-item .label { font-size: 0.55rem; letter-spacing: 0.3px; }
+    }
+
+    /* ---------- EVENT CARDS ---------- */
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: clamp(20px, 2.5vw, 30px);
+      margin-top: 24px;
+    }
+    @media (max-width: 480px) {
+      .event-grid { gap: 16px; margin-top: 16px; }
+    }
+    .event-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: 0.4s var(--transition);
+      border-left: 4px solid var(--secondary);
+      display: flex;
+      flex-direction: column;
+    }
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -12px rgba(0,0,0,0.12);
+    }
+    @media (max-width: 480px) {
+      .event-card:hover { transform: translateY(-2px); }
+    }
+    .event-card .event-body {
+      padding: clamp(20px, 2.5vw, 28px) clamp(16px, 2vw, 24px);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .event-card .event-body .tag {
+      display: inline-block;
+      background: var(--gold-soft);
+      color: var(--dark);
+      font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      align-self: flex-start;
+    }
+    .event-card .event-body h3 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      margin-bottom: 6px;
+    }
+    .event-card .event-body .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(8px, 1.2vw, 12px);
+      font-size: clamp(0.8rem, 1vw, 0.9rem);
+      color: var(--muted);
+      margin: 8px 0 12px;
+    }
+    .event-card .event-body .meta i { color: var(--secondary); margin-right: 4px; width: 16px; }
+    .event-card .event-body p { 
+      color: var(--muted); 
+      font-size: clamp(0.85rem, 1vw, 0.95rem); 
+      flex: 1;
+    }
+    .event-card .event-body .btn { 
+      margin-top: 16px; 
+      font-size: clamp(0.8rem, 0.9vw, 0.9rem); 
+      padding: 10px 20px;
+      align-self: flex-start;
+    }
+    @media (max-width: 480px) {
+      .event-card .event-body .btn { width: 100%; justify-content: center; }
+    }
+
+    /* ---------- TIMELINE ---------- */
+    .timeline-events {
+      position: relative;
+      padding-left: clamp(30px, 4vw, 40px);
+      margin-top: 20px;
+    }
+    @media (max-width: 480px) {
+      .timeline-events { padding-left: 24px; margin-top: 12px; }
+    }
+    .timeline-events::before {
+      content: '';
+      position: absolute;
+      left: clamp(8px, 1.2vw, 12px);
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gold-soft);
+    }
+    .timeline-event {
+      margin-bottom: clamp(24px, 3vw, 40px);
+      position: relative;
+      background: var(--white);
+      padding: clamp(16px, 2vw, 24px) clamp(16px, 2vw, 28px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-left: 3px solid var(--secondary);
+    }
+    @media (max-width: 480px) {
+      .timeline-event { padding: 14px 16px; margin-bottom: 18px; }
+    }
+    .timeline-event::before {
+      content: '';
+      position: absolute;
+      left: clamp(-26px, -3.5vw, -34px);
+      top: 20px;
+      width: clamp(10px, 1.2vw, 12px);
+      height: clamp(10px, 1.2vw, 12px);
+      background: var(--secondary);
+      border-radius: 50%;
+      border: 2px solid var(--cream);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
+    }
+    @media (max-width: 480px) {
+      .timeline-event::before { left: -20px; width: 8px; height: 8px; top: 16px; }
+    }
+    .timeline-event .date {
+      font-weight: 600;
+      color: var(--secondary);
+      font-size: clamp(0.8rem, 1vw, 0.9rem);
+      letter-spacing: 0.3px;
+    }
+    .timeline-event h3 { 
+      font-family: var(--font-serif); 
+      font-size: clamp(1.1rem, 1.6vw, 1.4rem); 
+      margin: 4px 0 6px;
+    }
+    .timeline-event p { 
+      color: var(--muted); 
+      font-size: clamp(0.85rem, 1vw, 0.95rem);
+    }
+    .timeline-event .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(10px, 1.5vw, 16px);
+      margin-top: 10px;
+      font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+      color: var(--muted);
+    }
+    .timeline-event .meta i { color: var(--secondary); margin-right: 4px; width: 16px; }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background: var(--primary-dark);
+      color: #d4c9b0;
+      padding: 50px 0 20px;
+    }
+    @media (max-width: 768px) {
+      .footer { padding: 40px 0 16px; }
+    }
+    .footer .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 1024px) {
+      .footer .grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+    }
+    @media (max-width: 768px) {
+      .footer .grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+    @media (max-width: 480px) {
+      .footer .grid { grid-template-columns: 1fr; gap: 20px; }
+    }
+    .footer h4 { 
+      color: white; 
+      font-family: var(--font-serif); 
+      margin-bottom: 12px;
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+    }
+    .footer a { 
+      display: block; 
+      padding: 4px 0; 
+      opacity: 0.7; 
+      transition: 0.3s;
+      font-size: clamp(0.85rem, 1vw, 0.95rem);
+    }
+    .footer a:hover { opacity: 1; color: var(--secondary); }
+    .footer .bottom {
+      border-top: 1px solid rgba(212,175,55,0.1);
+      padding-top: 20px;
+      margin-top: 30px;
+      text-align: center;
+      font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+      opacity: 0.6;
+    }
+
+    /* ---------- FLOATING ---------- */
+    .float-wa, .float-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: #25D366;
+      color: white;
+      width: clamp(48px, 5vw, 56px);
+      height: clamp(48px, 5vw, 56px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      box-shadow: 0 8px 24px rgba(37,211,102,0.25);
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    @media (max-width: 480px) {
+      .float-wa, .float-top { width: 44px; height: 44px; font-size: 1.2rem; bottom: 16px; right: 16px; }
+    }
+    .float-wa:hover { transform: scale(1.05); background: #1da851; }
+    .float-top {
+      bottom: 84px;
+      background: var(--secondary);
+      color: var(--dark);
+      box-shadow: 0 8px 24px rgba(212,175,55,0.25);
+    }
+    @media (max-width: 480px) {
+      .float-top { bottom: 70px; }
+    }
+    .float-top:hover { transform: scale(1.05); }
+
+    /* ---------- UTILITY ---------- */
+    .text-gold { color: var(--secondary); }
+    .bg-cream { background: var(--cream); }
+    .bg-white { background: var(--white); }
+    .mt-20 { margin-top: 20px; }
+    .mb-20 { margin-bottom: 20px; }
+    .text-center { text-align: center; }
+    @media (max-width: 480px) {
+      .mt-20 { margin-top: 16px; }
+      .mb-20 { margin-bottom: 16px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- <div id="preloader" aria-hidden="true">
-        <div class="loader-content">
-            <i class="fas fa-moon"></i>
-            <h2>Ullal Dargah</h2>
-            <div class="spinner"></div>
-        </div>
-    </div> -->
-
-    <div class="nav-overlay" id="navOverlay"></div>
-
-    <header class="main-header">
-        <div class="top-bar">
-            <div class="top-left">
-                <i class="fas fa-calendar-alt"></i>
-                <span id="current-date"></span>
-            </div>
-            <div class="top-right">
-                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://youtube.com/ULLALDARGAOFFICIAL" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://instagram.com/sayyidmadanidargaullal" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/+919113004135" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-        <nav class="navbar" role="navigation" aria-label="Main Navigation">
-             <a href="index.html" class="logo">
-                <img src="images/ullal_darga_logo.png" alt="Ullal Dargah Emblem">
-                <div class="logo-text">
-                    <h2>Ullal Dargah</h2>
-                </div>
-            </a>
-            <ul class="nav-links" id="navLinks">
-                <div class="mobile-nav-header">
-                    <span class="mobile-nav-title"><img src="images/ullal_darga_logo.png" alt="Ullal Dargah Emblem" style="height:32px; width:auto; vertical-align:middle; margin-right:8px;"> Ullal Dargah</span>
-                    <button class="nav-close-btn" id="navCloseBtn" aria-label="Close navigation menu"><i class="fas fa-times"></i></button>
-                </div>
-                <li><a href="index.html" class="nav-link">Home</a></li>
-<li class="dropdown">
-    <a href="#" class="nav-link">
-        About <i class="fas fa-chevron-down"></i>
-    </a>
-
-    <ul class="dropdown-menu">
-        <li><a href="history.html">History</a></li>
-        <li><a href="president.html">President</a></li>
-        <li><a href="khazi.html">Khazi</a></li>
-    </ul>
-</li>                    <li><a href="events.html" class="nav-link active">Events</a></li>
-                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                <!-- <li><a href="dua.html" class="nav-link">Du'a Wall</a></li> -->
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li class="mobile-donate-li"><a href="contact.html#donation" class="donate-btn mobile-donate-btn">Donate Now</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
-                <a href="contact.html#donation" class="donate-btn">Donate</a>
-                <div class="menu-btn" id="menuBtn" role="button" aria-label="Toggle menu" aria-expanded="false"><i class="fas fa-bars"></i></div>
-            </div>
-        </nav>
-    </header>
-
-    <main class="page-main">
-        <!-- Header (Background image removed, gradient placeholder in CSS) -->
-        <section class="page-header urs-bg" id="particles-js">
-            <div class="hero-overlay"></div>
-            <h1>Events & Congregations</h1>
-            <p>Join our spiritual gatherings, swalat majlis, and upcoming Urs festivals</p>
-        </section>
-
-        <section class="urs-section reveal">
-            <div class="section-title">
-                <h2>Grand Urs Festival</h2>
-                <p>Countdown to the upcoming spiritual congregation celebrating the legacy of Shareeful Madani (R.A.)</p>
-            </div>
-            <div class="countdown-container">
-                <div class="count-box">
-                    <h3 id="days">00</h3>
-                    <span>Days</span>
-                </div>
-                <div class="count-box">
-                    <h3 id="hours">00</h3>
-                    <span>Hours</span>
-                </div>
-                <div class="count-box">
-                    <h3 id="minutes">00</h3>
-                    <span>Minutes</span>
-                </div>
-                <div class="count-box">
-                    <h3 id="seconds">00</h3>
-                    <span>Seconds</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="timeline reveal">
-            <h2>Congregation Schedule</h2>
-            <div id="events-timeline">
-                <div style="text-align:center; padding:20px; color:var(--text-muted);">Loading schedule...</div>
-            </div>
-        </section>
-
-        <section class="prayer-times reveal">
-            <h2>Today's Prayer Schedule</h2>
-            <div class="prayer-grid">
-                <div class="prayer-card" id="prayer-fajr">
-                    <h3>Fajr</h3>
-                    <p class="time-display">Loading...</p>
-                </div>
-                <div class="prayer-card" id="prayer-dhuhr">
-                    <h3>Dhuhr</h3>
-                    <p class="time-display">Loading...</p>
-                </div>
-                <div class="prayer-card" id="prayer-asr">
-                    <h3>Asr</h3>
-                    <p class="time-display">Loading...</p>
-                </div>
-                <div class="prayer-card" id="prayer-maghrib">
-                    <h3>Maghrib</h3>
-                    <p class="time-display">Loading...</p>
-                </div>
-                <div class="prayer-card" id="prayer-isha">
-                    <h3>Isha</h3>
-                    <p class="time-display">Loading...</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-   <footer class="footer">
-    <div class="footer-container">
-
-        <div class="footer-col footer-about">
-            <img src="images/ullal_darga_logo.png" alt="Ullal Dargah Logo" class="footer-logo">
-
-            <p>
-                A sacred place of faith, spirituality, peace, and blessings for devotees from around the world.
-            </p>
-        </div>
-
-        <div class="footer-col">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="history.html">History</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="dua.html">Du'a Wall</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h3>Contact Info</h3>
-            <p>📍 Ullal Darga Road, Mangalore, Karnataka 575020</p>
-            <p>📞 +91 9113004135</p>
-            <p>✉ info@ullaldargah.com</p>
-        </div>
-
-        <div class="footer-col">
-            <h3>Follow Us</h3>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://instagram.com/sayyidmadanidargaullal"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/ULLALDARGAOFFICIAL"><i class="fab fa-youtube"></i></a>
-                <a href="https://wa.me/+919113004135"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <span class="date"><i class="far fa-calendar-alt"></i> <span id="currentDate"></span></span>
+      <div class="socials">
+        <a href="https://youtube.com/ULLALDARGAOFFICIAL" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com/sayyidmadanidargaullal" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/+919113004135" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
     </div>
+  </div>
 
-    <div class="footer-bottom">
-        <p>© 2026 Ullal Dargah. All Rights Reserved.</p>
+  <!-- HEADER -->
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="logo">
+        <img src="images/ullal_darga_logo.png" alt="Ullal Dargah Logo" onerror="this.style.display='none'">
+        Ullal Dargah
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a>About <i class="fas fa-chevron-down" style="font-size:0.6rem;"></i></a>
+          <div class="dropdown-menu">
+            <a href="history.html">History</a>
+            <a href="president.html">President</a>
+            <a href="khazi.html">Khazi</a>
+          </div>
+        </li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+        <a href="contact.html" class="donate-btn"><i class="fas fa-heart"></i> <span>Donate</span></a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-</footer>
+  </header>
 
-    <button id="topBtn" aria-label="Back to top">↑</button>
-    <a href="https://wa.me/+919113004135" class="whatsapp" target="_blank" aria-label="Contact on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" id="closeMenu" aria-label="Close menu"><i class="fas fa-times"></i></button>
+    <div class="logo-mobile">Ullal Dargah</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="history.html">History</a>
+      <a href="president.html">President</a>
+      <a href="khazi.html">Khazi</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" style="color:var(--secondary);">Donate</a>
+    </nav>
+  </div>
+  <div class="overlay" id="overlay"></div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/main.js"></script>
-</body>
-</html>
+  <!-- EVENTS HERO -->
+  <section class="events-hero">
+    <div class="container">
+      <h1>Events &amp; Congregations</h1>
+      <div class="gold-line"></div>
+      <p>Join us in celebrating faith, community, and spiritual gatherings throughout the year.</p>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="countdown-card">
+        <h3>Grand Urs Festival</h3>
+        <p class="sub">The annual Urs celebration — a time of devotion, remembrance, and community.</p>
+        <div class="countdown-grid">
+          <div class="countdown-item">
+            <div class="number" id="days">00</div>
+            <div class="label">Days</div>
+          </div>
+          <div class="countdown-item">
+            <div class="number" id="hours">00</div>
+            <div class="label">Hours</div>
+          </div>
+          <div class="countdown-item">
+            <div class="number" id="minutes">00</div>
+            <div class="label">Minutes</div>
+          </div>
+          <div class="countdown-item">
+            <div class="number" id="seconds">00</div>
+            <div class="label">Seconds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING EVENTS -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Upcoming Events</h2>
+      <div class="gold-line"></div>
+      <p class="section-sub">Stay connected with our calendar of spiritual gatherings, festivals, and community programs.</p>
+      
+      <div class="event-grid">
+        <div class="event-card">
+          <div class="event-body">
+            <span class="tag">Annual Festival</span>
+            <h3>Grand Urs Festival</h3>
+            <div class="meta">
+              <span><i class="fas fa-calendar-alt"></i> 15-17 Oct 2026</span>
+              <span><i class="fas fa-clock"></i> 5:00 AM – 10:00 PM</span>
+            </div>
+            <p>The annual Urs festival commemorating the saints of Ullal Dargah with prayers, recitations, and community gatherings.</p>
+            <a href="contact.html" class="btn btn-gold">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-body">
+            <span class="tag">Weekly Gathering</span>
+            <h3>Swalat Majlis</h3>
+            <div class="meta">
+              <span><i class="fas fa-calendar-alt"></i> Every Friday</span>
+              <span><i class="fas fa-clock"></i> 1:30 PM – 3:00 PM</span>
+            </div>
+            <p>Weekly spiritual gathering featuring prayers, recitations, and collective remembrance. Open to all devotees.</p>
+            <a href="contact.html" class="btn btn-gold">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-body">
+            <span class="tag">Monthly Program</span>
+            <h3>Religious Discourse</h3>
+            <div class="meta">
+              <span><i class="fas fa-calendar-alt"></i> Last Sunday</span>
+              <span><i class="fas fa-clock"></i> 4:00 PM – 6:00 PM</span>
+            </div>
+            <p>Monthly religious discourses and educational sessions covering Islamic teachings, spirituality, and community values.</p>
+            <a href="contact.html" class="btn btn-gold">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENT TIMELINE -->
+  <section class="bg-cream">
+    <div class="container">
+      <h2 class="section-title">Event Calendar</h2>
+      <div class="gold-line"></div>
+      <p class="section-sub">A complete schedule of religious gatherings, festivals, and special occasions at Ullal Dargah.</p>
+      
+      <div class="timeline-events">
+        <div class="timeline-event">
+          <div class="date"><i class="fas fa-calendar-alt"></i> 15 October 2026</div>
+          <h3>Grand Urs Festival – Day 1</h3>
+          <p>Opening prayers, Quran recitation, and community gathering to commence the annual Urs celebrations.</p>
+          <div class="meta">
+            <span><i class="fas fa-clock"></i> 5:00 AM – 10:00 PM</span>
+            <span><i class="fas fa-map-pin"></i> Ullal Dargah</span>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="date"><i class="fas fa-calendar-alt"></i> 16 October 2026</div>
+          <h3>Grand Urs Festival – Day 2</h3>
+          <p>Special prayers, spiritual discourses, and distribution of blessed food to devotees and visitors.</p>
+          <div class="meta">
+            <span><i class="fas fa-clock"></i> 5:00 AM – 10:00 PM</span>
+            <span><i class="fas fa-map-pin"></i> Ullal Dargah</span>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="date"><i class="fas fa-calendar-alt"></i> 17 October 2026</div>
+          <h3>Grand Urs Festival – Day 3</h3>
+          <p>Final prayers, congregational gathering, and closing ceremony of the Urs festival with community feast.</p>
+          <div class="meta">
+            <span><i class="fas fa-clock"></i> 5:00 AM – 10:00 PM</span>
+            <span><i class="fas fa-map-pin"></i> Ullal Dargah</span>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="date"><i class="fas fa-calendar-alt"></i> Every Friday</div>
+          <h3>Swalat Majlis</h3>
+          <p>Weekly spiritual gathering featuring prayers, recitations, and collective remembrance of the saints.</p>
+          <div class="meta">
+            <span><i class="fas fa-clock"></i> 1:30 PM – 3:00 PM</span>
+            <span><i class="fas fa-map-pin"></i> Madani Hall</span>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="date"><i class="fas fa-calendar-alt"></i> Last Sunday</div>
+          <h3>Religious Discourse</h3>
+          <p>Monthly educational sessions covering Islamic teachings, spirituality, and community values.</p>
+          <div class="meta">
+            <span><i class="fas fa-clock"></i> 4:00 PM – 6:00 PM</span>
+            <span><i class="fas fa-map-pin"></i> Ullal Dargah</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid">
+        <div>
+          <h4>Ullal Dargah</h4>
+          <p style="opacity:0.7;max-width:240px;font-size:clamp(0.85rem,1vw,0.95rem);">A sacred spiritual landmark in Ullal, Mangalore, preserving faith and heritage.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="history.html">History</a>
+          <a href="events.html">Events</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p style="font-size:clamp(0.85rem,1vw,0.95rem);"><i class="fas fa-map-pin"></i> Ullal Darga Road, Mangalore</p>
+          <p style="font-size:clamp(0.85rem,1vw,0.95rem);"><i class="fas fa-phone"></i> +91 9113004135</p>
+          <p style="font-size:clamp(0.85rem,1vw,0.95rem);"><i class="fas fa-envelope"></i> info@ullaldargah.com</p>
+        </div>
+        <div>
+          <h4>Follow Us</h4>
+          <a href="https://youtube.com/ULLALDARGAOFFICIAL"><i class="fab fa-youtube"></i> YouTube</a>
+          <a href="https://instagram.com/sayyidmadanidargaullal"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://wa.me/+919113004135"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+      <div class="bottom">© 2026 Ullal Dargah. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- FLOATING BUTTONS -->
+  <a href="https://wa.me/+919113004135" class="float-wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <button class="float-top" id="backTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script>
+    (function() {
+      // Mobile menu
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('overlay');
+      const closeMenu = document.getElementById('closeMenu');
+      const openMenu = () => { mobileMenu.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; };
+      const closeMenuFn = () => { mobileMenu.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; };
+      hamburger.addEventListener('click', openMenu);
+      closeMenu.addEventListener('click', closeMenuFn);
+      overlay.addEventListener('click', closeMenuFn);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenuFn(); });
+
+      // Header scroll
+      const header = document.getElementById('mainHeader');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+      }, { passive: true });
+
+      // Back to top
+      document.getElementById('backTop').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Theme toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const body = document.body;
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      if (currentTheme === 'dark') body.classList.add('dark');
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const theme = body.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+        themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      });
+      if (currentTheme === 'dark') themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+
+      // Current date
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
+
+      // Countdown timer
+      function updateCountdown() {
+        const target = new Date('2026-10-15T00:00:00+05:30').getTime();
+        const now = new Date().getTime();
+        const diff = Math.max(0, target - now);
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
+  </script>
+</body></html>
