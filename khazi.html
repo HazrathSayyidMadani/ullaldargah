@@ -1,423 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khazi · Ullal Dargah</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Amiri&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ---------- RESET & VARIABLES ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --primary: #0F5132;
+      --primary-dark: #073B25;
+      --secondary: #D4AF37;
+      --gold-soft: #E7C873;
+      --cream: #F8F5ED;
+      --white: #FFFFFF;
+      --dark: #111814;
+      --text: #303832;
+      --muted: #6B746D;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Outfit', sans-serif;
+      --shadow: 0 20px 40px -12px rgba(0,0,0,0.08);
+      --transition: cubic-bezier(0.22, 1, 0.36, 1);
+      --radius: 12px;
+    }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      --cream: #0C1F16;
+      --white: #10291D;
+      --text: #F5F1E8;
+      --muted: #B8B0A0;
+      --shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+      background: #07130E;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    section { padding: 80px 0; }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 640px;
+    }
+    .gold-line {
+      width: 60px;
+      height: 3px;
+      background: var(--secondary);
+      margin: 16px 0 24px;
+      border-radius: 4px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s var(--transition);
+      box-shadow: 0 4px 12px rgba(15,81,50,0.15);
+    }
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -8px rgba(15,81,50,0.25);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+      box-shadow: none;
+    }
+    .btn-outline:hover { background: var(--primary); color: white; }
+    .btn-gold {
+      background: var(--secondary);
+      color: var(--dark);
+    }
+    .btn-gold:hover { background: #c09f2e; }
 
-    <meta name="description"
-        content="Grand Khazi of Ullal Dargah - Spiritual Leadership">
+    /* ---------- HEADER ---------- */
+    .top-bar {
+      background: rgba(7, 59, 37, 0.85);
+      backdrop-filter: blur(6px);
+      color: #e8e0d0;
+      font-size: 0.85rem;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar .socials a {
+      margin-left: 16px;
+      color: #d4c9b0;
+      transition: 0.3s;
+    }
+    .top-bar .socials a:hover { color: var(--secondary); }
+    .top-bar .date { letter-spacing: 0.3px; }
 
-    <title>Ullal Dargah - Grand Khazi</title>
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 12px 0;
+      transition: all 0.4s var(--transition);
+      background: rgba(248, 245, 237, 0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+    body.dark .header {
+      background: rgba(7, 19, 14, 0.8);
+    }
+    .header.scrolled {
+      padding: 6px 0;
+      background: rgba(248, 245, 237, 0.92);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    body.dark .header.scrolled {
+      background: rgba(7, 19, 14, 0.92);
+    }
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .logo img { height: 44px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      font-weight: 500;
+    }
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: 0.3s var(--transition);
+    }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links .dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+    .nav-links .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 32px;
+      left: -12px;
+      background: var(--white);
+      padding: 12px 0;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      min-width: 160px;
+      border: 1px solid rgba(212,175,55,0.1);
+    }
+    .nav-links .dropdown:hover .dropdown-menu { display: block; }
+    .nav-links .dropdown-menu a {
+      display: block;
+      padding: 8px 24px;
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+    .nav-links .dropdown-menu a:hover { background: rgba(212,175,55,0.05); }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-actions .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .header-actions .donate-btn {
+      background: var(--secondary);
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--dark);
+      transition: 0.3s;
+    }
+    .header-actions .donate-btn:hover { background: #c09f2e; transform: scale(1.02); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 28px;
+      height: 2.5px;
+      background: var(--text);
+      border-radius: 4px;
+      transition: 0.3s;
+    }
 
-    <!-- Anti Flash Theme -->
-    <script>
-        (function () {
-            var savedTheme = localStorage.getItem('theme');
-            var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    /* ---------- MOBILE MENU ---------- */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 360px;
+      height: 100vh;
+      background: var(--primary-dark);
+      color: #f0ece0;
+      padding: 40px 30px;
+      transition: 0.5s var(--transition);
+      z-index: 9999;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { right: 0; }
+    .mobile-menu .close-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #f0ece0;
+      float: right;
+      cursor: pointer;
+    }
+    .mobile-menu .logo-mobile { font-size: 1.6rem; font-family: var(--font-serif); margin-bottom: 40px; }
+    .mobile-menu nav a {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+    .mobile-menu .dropdown-mobile a { padding-left: 20px; font-size: 0.95rem; }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.3);
+      z-index: 9998;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.4s;
+    }
+    .overlay.active { opacity: 1; pointer-events: auto; }
 
-            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-            }
-        })();
-    </script>
+    /* ---------- KHAZI HERO ---------- */
+    .khazi-hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #0a2e1f 100%);
+      position: relative;
+      color: white;
+    }
+    .khazi-hero .container { position: relative; z-index: 2; }
+    .khazi-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      max-width: 780px;
+    }
+    .khazi-hero .gold-line { background: var(--secondary); }
+    .khazi-hero p {
+      font-size: 1.2rem;
+      max-width: 540px;
+      opacity: 0.85;
+      margin-top: 16px;
+    }
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    /* ---------- PROFILE CARD ---------- */
+    .profile-card {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 50px;
+      align-items: start;
+      background: var(--white);
+      padding: 48px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-top: -40px;
+      position: relative;
+      z-index: 3;
+    }
+    .profile-card .avatar {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .profile-card .avatar img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    .profile-card .details h2 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      margin-bottom: 4px;
+    }
+    .profile-card .details .position {
+      color: var(--secondary);
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+    .profile-card .details .bio {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    /* ---------- RELIGIOUS DUTIES & MESSAGE ---------- */
+    .duties-message {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .duties-message .block {
+      background: var(--white);
+      padding: 36px 32px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-top: 3px solid var(--secondary);
+    }
+    .duties-message .block h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+    .duties-message .block p { color: var(--muted); font-size: 1.05rem; }
+    .duties-message .block ul {
+      list-style: none;
+      padding: 0;
+    }
+    .duties-message .block ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .duties-message .block ul li i { color: var(--secondary); width: 20px; }
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    /* ---------- RESPONSIBILITIES ---------- */
+    .resp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .resp-item {
+      background: var(--white);
+      padding: 24px 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: 0.3s var(--transition);
+    }
+    .resp-item:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -12px rgba(0,0,0,0.08); }
+    .resp-item i { font-size: 2rem; color: var(--secondary); margin-bottom: 12px; }
+    .resp-item h4 { font-family: var(--font-serif); font-size: 1.1rem; }
+    .resp-item p { color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
 
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background: var(--primary-dark);
+      color: #d4c9b0;
+      padding: 60px 0 20px;
+    }
+    .footer .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer h4 { color: white; font-family: var(--font-serif); margin-bottom: 16px; }
+    .footer a { display: block; padding: 4px 0; opacity: 0.7; transition: 0.3s; }
+    .footer a:hover { opacity: 1; color: var(--secondary); }
+    .footer .bottom {
+      border-top: 1px solid rgba(212,175,55,0.1);
+      padding-top: 24px;
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
 
+    /* ---------- FLOATING ---------- */
+    .float-wa, .float-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      background: #25D366;
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.25);
+      transition: 0.3s;
+    }
+    .float-wa:hover { transform: scale(1.05); background: #1da851; }
+    .float-top {
+      bottom: 100px;
+      background: var(--secondary);
+      color: var(--dark);
+      box-shadow: 0 8px 24px rgba(212,175,55,0.25);
+    }
+    .float-top:hover { transform: scale(1.05); }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1024px) {
+      .profile-card { grid-template-columns: 1fr; padding: 32px; }
+      .profile-card .avatar img { height: 300px; }
+      .duties-message { grid-template-columns: 1fr; }
+      .footer .grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .top-bar .socials, .top-bar .date { display: none; }
+      .hamburger { display: flex; }
+      .khazi-hero h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+      .footer .grid { grid-template-columns: 1fr; }
+      .float-wa, .float-top { width: 48px; height: 48px; font-size: 1.4rem; }
+      .resp-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .resp-grid { grid-template-columns: 1fr; }
+    }
+
+    .text-gold { color: var(--secondary); }
+    .bg-cream { background: var(--cream); }
+    .bg-white { background: var(--white); }
+    .mt-20 { margin-top: 20px; }
+    .mb-20 { margin-bottom: 20px; }
+    .text-center { text-align: center; }
+  </style>
 </head>
-
 <body>
-
-    <div class="nav-overlay" id="navOverlay"></div>
-
-    <header class="main-header">
-
-        <div class="top-bar">
-
-            <div class="top-left">
-                <i class="fas fa-calendar-alt"></i>
-                <span id="current-date"></span>
-            </div>
-
-            <div class="top-right">
-
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-
-                <a href="https://youtube.com/ULLALDARGAOFFICIAL">
-                    <i class="fab fa-youtube"></i>
-                </a>
-
-                <a href="https://instagram.com/sayyidmadanidargaullal">
-                    <i class="fab fa-instagram"></i>
-                </a>
-
-                <a href="https://wa.me/+919113004135">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-
-            </div>
-
-        </div>
-
-        <nav class="navbar">
-
-            <a href="index.html" class="logo">
-
-                <img src="images/ullal_darga_logo.png"
-                    alt="Ullal Dargah Logo">
-
-                <div class="logo-text">
-                    <h2>Ullal Dargah</h2>
-                </div>
-
-            </a>
-
-            <ul class="nav-links" id="navLinks">
-
-                <div class="mobile-nav-header">
-
-                    <span class="mobile-nav-title">
-
-                        <img src="images/ullal_darga_logo.png"
-                            style="height:32px;width:auto;margin-right:8px;">
-
-                        Ullal Dargah
-
-                    </span>
-
-                    <button class="nav-close-btn" id="navCloseBtn">
-
-                        <i class="fas fa-times"></i>
-
-                    </button>
-
-                </div>
-
-                <li>
-                    <a href="index.html" class="nav-link">
-                        Home
-                    </a>
-                </li>
-
-                <li class="dropdown">
-
-                    <a href="#" class="nav-link active">
-                        About
-                    </a>
-
-                    <ul class="dropdown-menu">
-
-                        <li>
-                            <a href="history.html">
-                                History
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="president.html">
-                                President
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="khazi.html" class="active">
-                                Grand Khazi
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </li>
-
-                <li>
-                    <a href="events.html" class="nav-link">
-                        Events
-                    </a>
-                </li>
-
-                <li>
-                    <a href="gallery.html" class="nav-link">
-                        Gallery
-                    </a>
-                </li>
-
-                <li>
-                    <a href="contact.html" class="nav-link">
-                        Contact
-                    </a>
-                </li>
-
-                <li class="mobile-donate-li">
-
-                    <a href="contact.html#donation"
-                        class="donate-btn mobile-donate-btn">
-
-                        Donate Now
-
-                    </a>
-
-                </li>
-
-            </ul>
-
-            <div class="nav-actions">
-
-                <button id="themeToggle">
-
-                    <i class="fas fa-moon"></i>
-
-                </button>
-
-                <a href="contact.html#donation"
-                    class="donate-btn">
-
-                    Donate
-
-                </a>
-
-                <div class="menu-btn"
-                    id="menuBtn">
-
-                    <i class="fas fa-bars"></i>
-
-                </div>
-
-            </div>
-
-        </nav>
-
-    </header>
-    <main class="page-main">
-
-    <!-- ================= PAGE HEADER ================= -->
-
-    <section class="page-header" id="particles-js">
-
-        <div class="hero-overlay"></div>
-
-        <h1>Grand Khazi</h1>
-
-        <p>
-            Meet the Grand Khazi of Ullal Dargah and learn about his
-            spiritual leadership, scholarship and lifelong service to Islam.
-        </p>
-
-    </section>
-
-    <!-- ================= INFO SECTION ================= -->
-
-    <section class="info-section reveal">
-
-        <div class="info-card">
-            <div class="icon">🕌</div>
-            <h3>Spiritual Leader</h3>
-            <p>Providing religious guidance to the Muslim community.</p>
-        </div>
-
-        <div class="info-card">
-            <div class="icon">📖</div>
-            <h3>Islamic Scholar</h3>
-            <p>Dedicated to preserving Islamic teachings and traditions.</p>
-        </div>
-
-        <div class="info-card">
-            <div class="icon">🤝</div>
-            <h3>Community Service</h3>
-            <p>Promoting harmony, unity and social welfare.</p>
-        </div>
-
-        <div class="info-card">
-            <div class="icon">🌍</div>
-            <h3>Inspiration</h3>
-            <p>Guiding thousands of devotees through faith and knowledge.</p>
-        </div>
-
-    </section>
-
-    <!-- ================= ABOUT GRAND KHAZI ================= -->
-
-    <section class="about reveal">
-
-        <div class="about-image">
-
-            <img src="images/apusthad.png"
-                 alt="A. P. Aboobacker Musliyar Kanthapuram"
-                 loading="lazy">
-
-        </div>
-
-        <div class="about-content">
-
-            <h2>A. P. Aboobacker Musliyar Kanthapuram</h2>
-
-            <div class="line"></div>
-
-            <p>
-                A. P. Aboobacker Musliyar Kanthapuram is one of the most
-                respected Islamic scholars in India and serves as the
-                Grand Khazi, providing spiritual guidance and leadership
-                to thousands of followers.
-            </p>
-
-            <p>
-                His teachings emphasize peace, compassion, education,
-                unity and the preservation of Islamic values while
-                encouraging harmony among people of all communities.
-            </p>
-
-            <p>
-                Through decades of dedicated service, he has inspired
-                numerous educational, charitable and religious initiatives,
-                strengthening the spiritual legacy of Ullal Dargah.
-            </p>
-
-        </div>
-
-    </section>
-
-    <!-- ================= GRAND KHAZI PROFILE ================= -->
-
- 
-
-</main>
-<footer class="footer">
-
-    <div class="footer-container">
-
-        <!-- About -->
-        <div class="footer-col footer-about">
-
-            <img src="images/ullal_darga_logo.png"
-                alt="Ullal Dargah Logo"
-                class="footer-logo">
-
-            <p>
-                A sacred place of faith, spirituality, peace and blessings
-                for devotees from around the world.
-            </p>
-
-        </div>
-
-        <!-- Quick Links -->
-        <div class="footer-col">
-
-            <h3>Quick Links</h3>
-
-            <ul>
-
-                <li><a href="index.html">Home</a></li>
-
-<li class="dropdown">
-    <a href="#" class="nav-link">
-        About <i class="fas fa-chevron-down"></i>
-    </a>
-
-    <ul class="dropdown-menu">
-        <li><a href="history.html">History</a></li>
-        <li><a href="president.html">President</a></li>
-        <li><a href="khazi.html">Khazi</a></li>
-    </ul>
-</li>    
-                <li><a href="president.html">President</a></li>
-
-                <li><a href="khazi.html">Grand Khazi</a></li>
-
-                <li><a href="events.html">Events</a></li>
-
-                <li><a href="gallery.html">Gallery</a></li>
-
-                <li><a href="contact.html">Contact</a></li>
-
-            </ul>
-
-        </div>
-
-        <!-- Contact -->
-        <div class="footer-col">
-
-            <h3>Contact Info</h3>
-
-            <p>📍 Ullal Darga Road, Mangalore, Karnataka 575020</p>
-
-            <p>📞 +91 9113004135</p>
-
-            <p>✉ info@ullaldargah.com</p>
-
-        </div>
-
-        <!-- Social -->
-        <div class="footer-col">
-
-            <h3>Follow Us</h3>
-
-            <div class="social-icons">
-
-                <a href="#">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-
-                <a href="https://instagram.com/sayyidmadanidargaullal">
-                    <i class="fab fa-instagram"></i>
-                </a>
-
-                <a href="https://youtube.com/ULLALDARGAOFFICIAL">
-                    <i class="fab fa-youtube"></i>
-                </a>
-
-                <a href="https://wa.me/+919113004135">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-
-            </div>
-
-        </div>
-
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <span class="date"><i class="far fa-calendar-alt"></i> Wednesday, 12 August 2026</span>
+      <div class="socials">
+        <a href="https://youtube.com/ULLALDARGAOFFICIAL" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com/sayyidmadanidargaullal" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/+919113004135" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
     </div>
+  </div>
 
-    <div class="footer-bottom">
-
-        <p>© 2026 Ullal Dargah. All Rights Reserved.</p>
-
+  <!-- HEADER -->
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="logo">
+        <img src="images/ullal_darga_logo.png" alt="Ullal Dargah Logo" onerror="this.style.display='none'">
+        Ullal Dargah
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a class="active">About <i class="fas fa-chevron-down" style="font-size:0.6rem;"></i></a>
+          <div class="dropdown-menu">
+            <a href="history.html">History</a>
+            <a href="president.html">President</a>
+            <a href="khazi.html">Khazi</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+        <a href="contact.html" class="donate-btn"><i class="fas fa-heart"></i> Donate</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+  </header>
 
-</footer>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" id="closeMenu"><i class="fas fa-times"></i></button>
+    <div class="logo-mobile">Ullal Dargah</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="history.html">History</a>
+      <a href="president.html">President</a>
+      <a href="khazi.html">Khazi</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" style="color:var(--secondary);">Donate</a>
+    </nav>
+  </div>
+  <div class="overlay" id="overlay"></div>
 
-<!-- Back To Top -->
+  <!-- KHAZI HERO -->
+  <section class="khazi-hero">
+    <div class="container">
+      <h1>Our Khazi</h1>
+      <div class="gold-line"></div>
+      <p>Spiritual guide and religious authority of Ullal Dargah, upholding Islamic traditions and community leadership.</p>
+    </div>
+  </section>
 
-<button id="topBtn" aria-label="Back to top">
-    ↑
-</button>
+  <!-- PROFILE CARD -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="profile-card">
+        <div class="avatar">
+          <img src="images/khazi-placeholder.jpg" alt="Khazi of Ullal Dargah" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22><rect fill=%22%230F5132%22 width=%22400%22 height=%22400%22/><text x=%2280%22 y=%22200%22 fill=%22%23D4AF37%22 font-size=%2230%22>Khazi</text></svg>'">
+        </div>
+        <div class="details">
+          <h2>Sayyid Abdur Rahman</h2>
+          <div class="position">Khazi · Ullal Dargah</div>
+          <div class="bio">
+            <p>A respected religious scholar and spiritual leader, the Khazi of Ullal Dargah is entrusted with the sacred responsibility of guiding the community in matters of faith, jurisprudence, and spiritual practice.</p>
+            <p style="margin-top:12px;">With deep knowledge of Islamic sciences and a compassionate approach, the Khazi serves as a source of wisdom and spiritual counsel for devotees and visitors alike.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- WhatsApp -->
+  <!-- RELIGIOUS DUTIES & MESSAGE -->
+  <section class="bg-cream">
+    <div class="container">
+      <div class="duties-message">
+        <div class="block">
+          <h3><i class="fas fa-gavel" style="color:var(--secondary);margin-right:12px;"></i> Religious Duties</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Leading congregational prayers and religious ceremonies</li>
+            <li><i class="fas fa-check-circle"></i> Providing Islamic guidance and legal rulings</li>
+            <li><i class="fas fa-check-circle"></i> Presiding over religious festivals and special occasions</li>
+            <li><i class="fas fa-check-circle"></i> Upholding the spiritual traditions of the Dargah</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3><i class="fas fa-comment" style="color:var(--secondary);margin-right:12px;"></i> Khazi's Message</h3>
+          <p>"The light of faith guides us through every challenge. Ullal Dargah is not just a place of prayer—it is a sanctuary of peace, where hearts find solace and souls find direction. May we always walk the path of compassion and unity."</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<a href="https://wa.me/+919113004135"
-   class="whatsapp"
-   target="_blank"
-   aria-label="Contact on WhatsApp">
+  <!-- COMMUNITY RESPONSIBILITIES -->
+  <section>
+    <div class="container text-center">
+      <h2 class="section-title">Spiritual &amp; Community Leadership</h2>
+      <div class="gold-line" style="margin:0 auto 16px;"></div>
+      <div class="resp-grid">
+        <div class="resp-item"><i class="fas fa-hand-holding-heart"></i><h4>Spiritual Guidance</h4><p>Providing religious education and spiritual counsel to the community.</p></div>
+        <div class="resp-item"><i class="fas fa-balance-scale"></i><h4>Islamic Jurisprudence</h4><p>Issuing religious rulings and ensuring adherence to Islamic principles.</p></div>
+        <div class="resp-item"><i class="fas fa-mosque"></i><h4>Religious Ceremonies</h4><p>Leading prayers, festivals, and special religious observances.</p></div>
+        <div class="resp-item"><i class="fas fa-users"></i><h4>Community Unity</h4><p>Fostering harmony and understanding among diverse groups.</p></div>
+      </div>
+    </div>
+  </section>
 
-    <i class="fab fa-whatsapp"></i>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid">
+        <div><h4>Ullal Dargah</h4><p style="opacity:0.7;max-width:240px;">A sacred spiritual landmark in Ullal, Mangalore, preserving faith and heritage.</p></div>
+        <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="history.html">History</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></div>
+        <div><h4>Contact</h4><p><i class="fas fa-map-pin"></i> Ullal Darga Road, Mangalore, Karnataka 575020</p><p><i class="fas fa-phone"></i> +91 9113004135</p><p><i class="fas fa-envelope"></i> info@ullaldargah.com</p></div>
+        <div><h4>Follow Us</h4><a href="https://youtube.com/ULLALDARGAOFFICIAL"><i class="fab fa-youtube"></i> YouTube</a><a href="https://instagram.com/sayyidmadanidargaullal"><i class="fab fa-instagram"></i> Instagram</a><a href="https://wa.me/+919113004135"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+      </div>
+      <div class="bottom">© 2026 Ullal Dargah. All Rights Reserved.</div>
+    </div>
+  </footer>
 
-</a>
+  <!-- FLOATING BUTTONS -->
+  <a href="https://wa.me/+919113004135" class="float-wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <button class="float-top" id="backTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
-<!-- Scripts -->
+  <script>
+    (function() {
+      // Mobile menu
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('overlay');
+      const closeMenu = document.getElementById('closeMenu');
+      const openMenu = () => { mobileMenu.classList.add('open'); overlay.classList.add('active'); };
+      const closeMenuFn = () => { mobileMenu.classList.remove('open'); overlay.classList.remove('active'); };
+      hamburger.addEventListener('click', openMenu);
+      closeMenu.addEventListener('click', closeMenuFn);
+      overlay.addEventListener('click', closeMenuFn);
 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+      // Header scroll
+      const header = document.getElementById('mainHeader');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+      });
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      // Back to top
+      document.getElementById('backTop').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
 
-<script src="js/main.js"></script>
-
+      // Theme toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const body = document.body;
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      if (currentTheme === 'dark') body.classList.add('dark');
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const theme = body.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+        themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      });
+      if (currentTheme === 'dark') themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    })();
+  </script>
 </body>
 </html>
