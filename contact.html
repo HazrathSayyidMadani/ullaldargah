@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact · Ullal Dargah</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Amiri&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ---------- RESET & VARIABLES ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --primary: #0F5132;
+      --primary-dark: #073B25;
+      --secondary: #D4AF37;
+      --gold-soft: #E7C873;
+      --cream: #F8F5ED;
+      --white: #FFFFFF;
+      --dark: #111814;
+      --text: #303832;
+      --muted: #6B746D;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Outfit', sans-serif;
+      --shadow: 0 20px 40px -12px rgba(0,0,0,0.08);
+      --transition: cubic-bezier(0.22, 1, 0.36, 1);
+      --radius: 12px;
+    }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      --cream: #0C1F16;
+      --white: #10291D;
+      --text: #F5F1E8;
+      --muted: #B8B0A0;
+      --shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+      background: #07130E;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    section { padding: 80px 0; }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 640px;
+    }
+    .gold-line {
+      width: 60px;
+      height: 3px;
+      background: var(--secondary);
+      margin: 16px 0 24px;
+      border-radius: 4px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s var(--transition);
+      box-shadow: 0 4px 12px rgba(15,81,50,0.15);
+    }
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -8px rgba(15,81,50,0.25);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+      box-shadow: none;
+    }
+    .btn-outline:hover { background: var(--primary); color: white; }
+    .btn-gold {
+      background: var(--secondary);
+      color: var(--dark);
+    }
+    .btn-gold:hover { background: #c09f2e; }
+
+    /* ---------- HEADER ---------- */
+    .top-bar {
+      background: rgba(7, 59, 37, 0.85);
+      backdrop-filter: blur(6px);
+      color: #e8e0d0;
+      font-size: 0.85rem;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar .socials a {
+      margin-left: 16px;
+      color: #d4c9b0;
+      transition: 0.3s;
+    }
+    .top-bar .socials a:hover { color: var(--secondary); }
+    .top-bar .date { letter-spacing: 0.3px; }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 12px 0;
+      transition: all 0.4s var(--transition);
+      background: rgba(248, 245, 237, 0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+    body.dark .header {
+      background: rgba(7, 19, 14, 0.8);
+    }
+    .header.scrolled {
+      padding: 6px 0;
+      background: rgba(248, 245, 237, 0.92);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    body.dark .header.scrolled {
+      background: rgba(7, 19, 14, 0.92);
+    }
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .logo img { height: 44px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      font-weight: 500;
+    }
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: 0.3s var(--transition);
+    }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links .dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+    .nav-links .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 32px;
+      left: -12px;
+      background: var(--white);
+      padding: 12px 0;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      min-width: 160px;
+      border: 1px solid rgba(212,175,55,0.1);
+    }
+    .nav-links .dropdown:hover .dropdown-menu { display: block; }
+    .nav-links .dropdown-menu a {
+      display: block;
+      padding: 8px 24px;
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+    .nav-links .dropdown-menu a:hover { background: rgba(212,175,55,0.05); }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-actions .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .header-actions .donate-btn {
+      background: var(--secondary);
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--dark);
+      transition: 0.3s;
+    }
+    .header-actions .donate-btn:hover { background: #c09f2e; transform: scale(1.02); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 28px;
+      height: 2.5px;
+      background: var(--text);
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+
+    /* ---------- MOBILE MENU ---------- */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 360px;
+      height: 100vh;
+      background: var(--primary-dark);
+      color: #f0ece0;
+      padding: 40px 30px;
+      transition: 0.5s var(--transition);
+      z-index: 9999;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { right: 0; }
+    .mobile-menu .close-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #f0ece0;
+      float: right;
+      cursor: pointer;
+    }
+    .mobile-menu .logo-mobile { font-size: 1.6rem; font-family: var(--font-serif); margin-bottom: 40px; }
+    .mobile-menu nav a {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+    .mobile-menu .dropdown-mobile a { padding-left: 20px; font-size: 0.95rem; }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.3);
+      z-index: 9998;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.4s;
+    }
+    .overlay.active { opacity: 1; pointer-events: auto; }
+
+    /* ---------- CONTACT HERO ---------- */
+    .contact-hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #0a2e1f 100%);
+      position: relative;
+      color: white;
+    }
+    .contact-hero .container { position: relative; z-index: 2; }
+    .contact-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      max-width: 780px;
+    }
+    .contact-hero .gold-line { background: var(--secondary); }
+    .contact-hero p {
+      font-size: 1.2rem;
+      max-width: 540px;
+      opacity: 0.85;
+      margin-top: 16px;
+    }
+
+    /* ---------- CONTACT INFO GRID ---------- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+    .contact-info {
+      background: var(--white);
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .contact-info .info-item {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    .contact-info .info-item:last-child { border-bottom: none; }
+    .contact-info .info-item i {
+      font-size: 1.4rem;
+      color: var(--secondary);
+      width: 32px;
+      margin-top: 4px;
+    }
+    .contact-info .info-item h4 { font-family: var(--font-serif); font-size: 1.1rem; }
+    .contact-info .info-item p { color: var(--muted); }
+
+    /* ---------- CONTACT FORM ---------- */
+    .contact-form {
+      background: var(--white);
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .contact-form h3 { font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 20px; }
+    .contact-form .form-group {
+      margin-bottom: 20px;
+    }
+    .contact-form label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      background: var(--cream);
+      transition: 0.3s;
+      color: var(--text);
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+    }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    /* ---------- MAP ---------- */
+    .map-container {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-top: 40px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+    }
+
+    /* ---------- FAQ ACCORDION ---------- */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .faq-item {
+      background: var(--white);
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-left: 3px solid var(--secondary);
+    }
+    .faq-item h4 { font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); font-size: 0.95rem; }
+
+    /* ---------- SOCIAL & WHATSAPP ---------- */
+    .social-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--cream);
+      border-radius: 40px;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+    .social-links a:hover {
+      background: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-2px);
+    }
+    .social-links a i { font-size: 1.2rem; }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background: var(--primary-dark);
+      color: #d4c9b0;
+      padding: 60px 0 20px;
+    }
+    .footer .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer h4 { color: white; font-family: var(--font-serif); margin-bottom: 16px; }
+    .footer a { display: block; padding: 4px 0; opacity: 0.7; transition: 0.3s; }
+    .footer a:hover { opacity: 1; color: var(--secondary); }
+    .footer .bottom {
+      border-top: 1px solid rgba(212,175,55,0.1);
+      padding-top: 24px;
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    /* ---------- FLOATING ---------- */
+    .float-wa, .float-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      background: #25D366;
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.25);
+      transition: 0.3s;
+    }
+    .float-wa:hover { transform: scale(1.05); background: #1da851; }
+    .float-top {
+      bottom: 100px;
+      background: var(--secondary);
+      color: var(--dark);
+      box-shadow: 0 8px 24px rgba(212,175,55,0.25);
+    }
+    .float-top:hover { transform: scale(1.05); }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .footer .grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .top-bar .socials, .top-bar .date { display: none; }
+      .hamburger { display: flex; }
+      .contact-hero h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+      .footer .grid { grid-template-columns: 1fr; }
+      .float-wa, .float-top { width: 48px; height: 48px; font-size: 1.4rem; }
+      .contact-info, .contact-form { padding: 24px; }
+      .social-links a { padding: 8px 16px; font-size: 0.9rem; }
+    }
+    @media (max-width: 480px) {
+      .social-links { flex-direction: column; }
+    }
+
+    .text-gold { color: var(--secondary); }
+    .bg-cream { background: var(--cream); }
+    .bg-white { background: var(--white); }
+    .mt-20 { margin-top: 20px; }
+    .mb-20 { margin-bottom: 20px; }
+    .text-center { text-align: center; }
+  </style>
+</head>
+<body>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <span class="date"><i class="far fa-calendar-alt"></i> Wednesday, 12 August 2026</span>
+      <div class="socials">
+        <a href="https://youtube.com/ULLALDARGAOFFICIAL" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com/sayyidmadanidargaullal" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/+919113004135" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="logo">
+        <img src="images/ullal_darga_logo.png" alt="Ullal Dargah Logo" onerror="this.style.display='none'">
+        Ullal Dargah
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a>About <i class="fas fa-chevron-down" style="font-size:0.6rem;"></i></a>
+          <div class="dropdown-menu">
+            <a href="history.html">History</a>
+            <a href="president.html">President</a>
+            <a href="khazi.html">Khazi</a>
+          </div>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+        <a href="contact.html" class="donate-btn"><i class="fas fa-heart"></i> Donate</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" id="closeMenu"><i class="fas fa-times"></i></button>
+    <div class="logo-mobile">Ullal Dargah</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="history.html">History</a>
+      <a href="president.html">President</a>
+      <a href="khazi.html">Khazi</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" style="color:var(--secondary);">Donate</a>
+    </nav>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- CONTACT HERO -->
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Contact &amp; Support</h1>
+      <div class="gold-line"></div>
+      <p>We welcome your inquiries, feedback, and support. Reach out to us through any of the channels below.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT GRID -->
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <h2 class="section-title" style="font-size:1.8rem;">Get in Touch</h2>
+          <div class="gold-line" style="margin:8px 0 20px;"></div>
+          
+          <div class="info-item">
+            <i class="fas fa-map-pin"></i>
+            <div>
+              <h4>Address</h4>
+              <p>Ullal Darga Road,<br>Mangalore, Karnataka 575020</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Phone</h4>
+              <p><a href="tel:+919113004135">+91 9113004135</a></p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p><a href="mailto:info@ullaldargah.com">info@ullaldargah.com</a></p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Visiting Hours</h4>
+              <p>Open daily for visitors and devotees<br>5:00 AM – 10:00 PM</p>
+            </div>
+          </div>
+
+          <div style="margin-top:20px;">
+            <h4 style="font-family:var(--font-serif);">Connect With Us</h4>
+            <div class="social-links">
+              <a href="https://youtube.com/ULLALDARGAOFFICIAL"><i class="fab fa-youtube"></i> YouTube</a>
+              <a href="https://instagram.com/sayyidmadanidargaullal"><i class="fab fa-instagram"></i> Instagram</a>
+              <a href="https://wa.me/+919113004135"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h3>Send a Message</h3>
+          <form id="contactForm" onsubmit="event.preventDefault(); alert('Thank you for your message. We will respond shortly.');">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" placeholder="Subject of your message">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Write your message here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.876543210987!2d74.8321!3d12.7712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4d123456789ab%3A0x123456789abcdef!2sUllal%20Dargah!5e0!3m2!1sen!2sin!4v1700000000000" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ullal Dargah Location"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="bg-cream">
+    <div class="container">
+      <h2 class="section-title text-center" style="text-align:center;">Frequently Asked Questions</h2>
+      <div class="gold-line" style="margin:0 auto 16px;"></div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>What are the visiting hours?</h4>
+          <p>The Dargah is open daily from 5:00 AM to 10:00 PM for visitors and devotees.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Is there a dress code?</h4>
+          <p>Visitors are requested to dress modestly and respectfully when entering the Dargah premises.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I make a donation online?</h4>
+          <p>Yes, donations can be made through our secure donation portal. Please contact us for more information.</p>
+        </div>
+        <div class="faq-item">
+          <h4>How can I participate in events?</h4>
+          <p>Event schedules are posted on our Events page. You can also contact us for specific inquiries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATION SECTION -->
+  <section>
+    <div class="container text-center">
+      <h2 class="section-title">Support The Dargah</h2>
+      <div class="gold-line" style="margin:0 auto 16px;"></div>
+      <p class="section-sub" style="margin:0 auto 30px;">Your contributions help preserve the spiritual heritage and support community services of Ullal Dargah.</p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:24px; max-width:900px; margin:0 auto;">
+        <div class="card-premium" style="background:var(--white); padding:32px 24px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:3px solid transparent; transition:0.4s var(--transition);">
+          <i class="fas fa-hand-holding-heart" style="font-size:2.4rem;color:var(--secondary);margin-bottom:16px;"></i>
+          <h3 style="font-family:var(--font-serif);">General Donation</h3>
+          <p style="color:var(--muted);font-size:0.95rem;margin:8px 0 16px;">Support the ongoing operations and maintenance of the Dargah.</p>
+          <a href="contact.html" class="btn btn-gold" style="font-size:0.9rem;padding:10px 24px;">Donate Now</a>
+        </div>
+        <div class="card-premium" style="background:var(--white); padding:32px 24px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:3px solid transparent; transition:0.4s var(--transition);">
+          <i class="fas fa-utensils" style="font-size:2.4rem;color:var(--secondary);margin-bottom:16px;"></i>
+          <h3 style="font-family:var(--font-serif);">Food Distribution</h3>
+          <p style="color:var(--muted);font-size:0.95rem;margin:8px 0 16px;">Contribute to feeding programs for the community.</p>
+          <a href="contact.html" class="btn btn-gold" style="font-size:0.9rem;padding:10px 24px;">Donate Now</a>
+        </div>
+        <div class="card-premium" style="background:var(--white); padding:32px 24px; border-radius:var(--radius); box-shadow:var(--shadow); border-bottom:3px solid transparent; transition:0.4s var(--transition);">
+          <i class="fas fa-users" style="font-size:2.4rem;color:var(--secondary);margin-bottom:16px;"></i>
+          <h3 style="font-family:var(--font-serif);">Community Support</h3>
+          <p style="color:var(--muted);font-size:0.95rem;margin:8px 0 16px;">Help fund educational and welfare initiatives.</p>
+          <a href="contact.html" class="btn btn-gold" style="font-size:0.9rem;padding:10px 24px;">Donate Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid">
+        <div><h4>Ullal Dargah</h4><p style="opacity:0.7;max-width:240px;">A sacred spiritual landmark in Ullal, Mangalore, preserving faith and heritage.</p></div>
+        <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="history.html">History</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></div>
+        <div><h4>Contact</h4><p><i class="fas fa-map-pin"></i> Ullal Darga Road, Mangalore, Karnataka 575020</p><p><i class="fas fa-phone"></i> +91 9113004135</p><p><i class="fas fa-envelope"></i> info@ullaldargah.com</p></div>
+        <div><h4>Follow Us</h4><a href="https://youtube.com/ULLALDARGAOFFICIAL"><i class="fab fa-youtube"></i> YouTube</a><a href="https://instagram.com/sayyidmadanidargaullal"><i class="fab fa-instagram"></i> Instagram</a><a href="https://wa.me/+919113004135"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+      </div>
+      <div class="bottom">© 2026 Ullal Dargah. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- FLOATING BUTTONS -->
+  <a href="https://wa.me/+919113004135" class="float-wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <button class="float-top" id="backTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script>
+    (function() {
+      // Mobile menu
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('overlay');
+      const closeMenu = document.getElementById('closeMenu');
+      const openMenu = () => { mobileMenu.classList.add('open'); overlay.classList.add('active'); };
+      const closeMenuFn = () => { mobileMenu.classList.remove('open'); overlay.classList.remove('active'); };
+      hamburger.addEventListener('click', openMenu);
+      closeMenu.addEventListener('click', closeMenuFn);
+      overlay.addEventListener('click', closeMenuFn);
+
+      // Header scroll
+      const header = document.getElementById('mainHeader');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+      });
+
+      // Back to top
+      document.getElementById('backTop').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Theme toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const body = document.body;
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      if (currentTheme === 'dark') body.classList.add('dark');
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const theme = body.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+        themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      });
+      if (currentTheme === 'dark') themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    })();
+  </script>
+</body>
+</html>
